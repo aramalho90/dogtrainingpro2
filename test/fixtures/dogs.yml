@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  sex: MyString
+  dob: 2021-01-10
+  breed: MyString
+  color: MyString
+  weight: MyString
+  chip: MyString
+  vaccines: 2021-01-10
+  canil: 2021-01-10
+  allergies: MyString
+  obs: MyText
+
+two:
+  name: MyString
+  sex: MyString
+  dob: 2021-01-10
+  breed: MyString
+  color: MyString
+  weight: MyString
+  chip: MyString
+  vaccines: 2021-01-10
+  canil: 2021-01-10
+  allergies: MyString
+  obs: MyText
