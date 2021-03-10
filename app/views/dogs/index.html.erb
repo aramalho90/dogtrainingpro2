@@ -1,21 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Dogs</h1>
 
-<table>
+<table class="table table-striped table-dark">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Sex</th>
-      <th>Dob</th>
-      <th>Breed</th>
-      <th>Color</th>
-      <th>Weight</th>
-      <th>Chip</th>
+      <th>Nome</th>
+      <th>Sexo</th>
+      <th>Data de Nascimento</th>
+      <th>Raça</th>
+      <th>Cor</th>
+      <th>Peso</th>
+      <th>No. Chip</th>
       <th>Vaccines</th>
-      <th>Canil</th>
-      <th>Allergies</th>
-      <th>Obs</th>
+      <th>Canileish</th>
+      <th>Alergias</th>
+      <th>Observações</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -34,14 +33,13 @@
         <td><%= dog.canil %></td>
         <td><%= dog.allergies %></td>
         <td><%= dog.obs %></td>
-        <td><%= link_to 'Show', dog %></td>
-        <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
-        <td><%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to dog, style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
+        <td><%= link_to edit_dog_path(dog), style:"color:white;" do %><i class="fas fa-pencil-alt"></i><% end %></td>
+        <td><%= link_to dog, style:"color:white;", method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fas fa-trash-alt"></i><% end %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Dog', new_dog_path %>
+<%= link_to 'Adicionar cão', new_dog_path, class: "btn btn-primary font-weight-bold", style: "margin-left:5px;color:white;" %>

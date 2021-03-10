@@ -1,6 +1,8 @@
-<h1>Editing Dog</h1>
+<br><h3 class="text-center" >Editando <%= @dog.name %></h3><br>
 
 <%= render 'form', dog: @dog %>
 
-<%= link_to 'Show', @dog %> |
-<%= link_to 'Back', dogs_path %>
+<div m-2>
+  <%= link_to 'Retornar', dogs_path, class: "btn btn-primary font-weight-bold float-left", style: "margin-left:5px;color:white;" %>
+  <%= link_to 'Mostrar', @dog, class: "btn btn-primary font-weight-bold float-left", style: "margin-left:5px;color:white;" %>
+</div>
