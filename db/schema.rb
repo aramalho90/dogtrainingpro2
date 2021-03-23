@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_10_170247) do
+ActiveRecord::Schema.define(version: 2021_03_23_195000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 2021_03_10_170247) do
     t.text "obs"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ownername"
+    t.string "contact"
+    t.string "address"
+    t.string "zipcode"
+    t.string "city"
+    t.integer "nif"
+    t.string "email"
+    t.string "referral"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

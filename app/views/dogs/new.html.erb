@@ -1,18 +1,103 @@
-<h1>New Dog</h1>
+<div class="jumbotron">
 
-<%= simple_form_for @dog do |f| %>
-  <%= f.input :name, label: 'Nome' %>
-  <%= f.input :sex, label: 'Sexo' , collection: Dog::GENDER %>
-  <%= f.input :dob, label: 'Data de Nascimento' , include_blank: true %>
-  <%= f.input :breed, label: 'Raça' %>
-  <%= f.input :color, label: 'Cor'  %>
-  <%= f.input :weight, label: 'Peso'  %>
-  <%= f.input :chip, label: 'Chip no.'  %>
-  <%= f.input :vaccines, include_blank: true %>
-  <%= f.input :canil, label: 'Canileish' , include_blank: true %>
-  <%= f.input :allergies, label: 'Alergias' %>
-  <%= f.input :obs, label: 'Observações' %>
-  <%= f.button :submit, value: 'Submeter' %>
-<% end %>
+ <h1 class="display-4 text-center" style: "text-align: center">Adicionar cão</h1>
 
-<%= link_to 'Back', dogs_path %>
+ <%= simple_form_for @dog, :html => {:class => "form-horizontal center"} do |f| %>
+   <%= f.error_notification %>
+   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :name,label:'Nome', class: "form-control" %>
+          <label>Fotografia</label><br>
+          <%= f.file_field :picture%>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-2">
+          <%= f.input :sex, label:'Sexo', class: "form-control" , collection: Dog::GENDER %>
+        </div>
+        <div class="form-group col-md-4">
+          <%= f.input :dob, label:'Data de Nascimento', class: "form-control", include_blank: true %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-4">
+            <%= f.input :breed,label:'Raça', class: "form-control" %>
+         </div>
+         <div class="form-group col-md-2">
+            <%= f.input :color,label:'Cor', class: "form-control" %>
+         </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-2">
+            <%= f.input :weight,label:'Peso', class: "form-control" %>
+         </div>
+         <div class="form-group col-md-2">
+            <%= f.input :chip,label:'Chip no.', class: "form-control" %>
+         </div>
+         <div class="form-group col-md-4">
+             <%= f.input :allergies,label:'Alergias', class: "form-control" %>
+          </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :vaccines, label:'Vacinas em dia até', class: "form-control" , include_blank: true %>
+        </div>
+        <div class="form-group col-md-4">
+          <%= f.input :canil, label:'Tosse do Canil em dia até', class: "form-control", include_blank: true %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-8">
+          <%= f.input :obs, label:'Observações', class: "form-control" %>
+        </div>
+      </div>
+
+        <hr class="my-4 h-25">
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :ownername, label:'Nome do dono', class: "form-control" %>
+        </div>
+        <div class="form-group col-md-2">
+          <%= f.input :contact, label:'Contacto', class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :email, label:'Email', class: "form-control" %>
+        </div>
+        <div class="form-group col-md-2">
+          <%= f.input :nif, label:'NIF', class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :address, label:'Morada', class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.input :city, label:'Localidade', class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.input :zipcode, label:'Código postal', class: "form-control" %>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin: 15px">
+        <%= f.button :submit, value: 'Submeter', :class=> "btn btn-primary font-weight-bold", :style=> "margin-left:5px;color:white;" %>
+        <%= link_to 'Retornar', dogs_path, class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
+    </div>
+
+ <% end %>
