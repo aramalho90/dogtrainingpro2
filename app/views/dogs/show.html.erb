@@ -1,59 +1,110 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron">
 
-<p>
-  <strong>Nome:</strong>
-  <%= @dog.name %>
-</p>
+ <h1 class="display-4 text-center" style: "text-align: center">Mostrando <%= @dog.name %></h1>
 
-<p>
-  <strong>Sexo:</strong>
-  <%= @dog.sex %>
-</p>
+ <%= simple_form_for @dog, :html => {:class => "form-horizontal center"} do |f| %>
+<% if @dog.picture.attached? %>
+   <img class="img-responsive img-thumbnail float-right rounded" src="<%=(url_for(@dog.picture)) %>" alt="Card image cap">
+<% else %>
+<div class="card float-right" style="width: 307px;height:307px;">
+  <img class="card-img-top" src="/dog-avatar.jpg" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text text-center">Este cão ainda não possui fotografia.</p>
+  </div>
+</div>
 
-<p>
-  <strong>Data de Nascimento:</strong>
-  <%= @dog.dob %>
-</p>
+<% end %>
 
-<p>
-  <strong>Raça:</strong>
-  <%= @dog.breed %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :name,label:'Nome', class: "form-control", :readonly => true %>
+        </div>
+      </div>
 
-<p>
-  <strong>Cor:</strong>
-  <%= @dog.color %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-1">
+          <%= f.input :sex, label:'Sexo', class: "form-control" , :readonly => true %>
+        </div>
+        <div class="form-group col-md-4">
+          <%= f.input :dob, label:'Data de Nascimento', class: "form-control", include_blank: true, :readonly => true %>
+        </div>
+      </div>
 
-<p>
-  <strong>Peso:</strong>
-  <%= @dog.weight %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-4">
+            <%= f.input :breed,label:'Raça', class: "form-control", :readonly => true %>
+         </div>
+         <div class="form-group col-md-2">
+            <%= f.input :color,label:'Cor', class: "form-control", :readonly => true %>
+         </div>
+      </div>
 
-<p>
-  <strong>No. Chip:</strong>
-  <%= @dog.chip %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-2">
+            <%= f.input :weight,label:'Peso', class: "form-control", :readonly => true %>
+         </div>
+         <div class="form-group col-md-2">
+            <%= f.input :chip,label:'Chip no.', class: "form-control", :readonly => true %>
+         </div>
+         <div class="form-group col-md-4">
+             <%= f.input :allergies,label:'Alergias', class: "form-control", :readonly => true %>
+          </div>
+      </div>
 
-<p>
-  <strong>Vaccines:</strong>
-  <%= @dog.vaccines %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :vaccines, label:'Vacinas em dia até', class: "form-control" , include_blank: true, :readonly => true %>
+        </div>
+        <div class="form-group col-md-4">
+          <%= f.input :canil, label:'Tosse do Canil em dia até', class: "form-control", include_blank: true, :readonly => true %>
+        </div>
+      </div>
 
-<p>
-  <strong>Canileish:</strong>
-  <%= @dog.canil %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-8">
+          <%= f.input :obs, label:'Observações', class: "form-control", :readonly => true %>
+        </div>
+      </div>
 
-<p>
-  <strong>Alergias:</strong>
-  <%= @dog.allergies %>
-</p>
+        <hr class="my-4 h-25">
 
-<p>
-  <strong>Observações:</strong>
-  <%= @dog.obs %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :ownername, label:'Nome do dono', class: "form-control", :readonly => true %>
+        </div>
+        <div class="form-group col-md-2">
+          <%= f.input :contact, label:'Contacto', class: "form-control", :readonly => true %>
+        </div>
+      </div>
 
-<%= link_to 'Editar', edit_dog_path(@dog) %> |
-<%= link_to 'Retornar', dogs_path %>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :email, label:'Email', class: "form-control", :readonly => true %>
+        </div>
+        <div class="form-group col-md-2">
+          <%= f.input :nif, label:'NIF', class: "form-control", :readonly => true %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :address, label:'Morada', class: "form-control", :readonly => true %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.input :city, label:'Localidade', class: "form-control", :readonly => true %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.input :zipcode, label:'Código postal', class: "form-control", :readonly => true %>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin: 15px">
+        <%= link_to 'Editar', edit_dog_path(@dog), class: "btn btn-warning font-weight-bold ", style: "margin-left:5px;color:black;" %>
+        <%= link_to 'Retornar', dogs_path, class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
+    </div>
+
+ <% end %>
