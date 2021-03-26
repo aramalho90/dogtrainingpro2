@@ -4,9 +4,10 @@ class DogsController < ApplicationController
   # GET /dogs
   # GET /dogs.json
   def index
-    @dogs = Dog.all
+   #@dogs = Dog.all
+   @q = Dog.ransack(params[:q])
+   @dogs = @q.result().paginate(page: params[:page], per_page: 15)
   end
-
   # GET /dogs/1
   # GET /dogs/1.json
   def show
