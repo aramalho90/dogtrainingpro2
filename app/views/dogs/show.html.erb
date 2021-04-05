@@ -1,19 +1,18 @@
 <div class="jumbotron">
+  <h1 class="display-4 text-center" style: "text-align: center">Mostrando <%= @dog.name %></h1>
+  <%= simple_form_for @dog, :html => {:class => "form-horizontal center"} do |f| %>
+  <% if @dog.picture.attached? %>
+    <img class="img-responsive img-thumbnail float-right rounded" src="<%=(url_for(@dog.picture)) %>" alt="Card image cap">
+  <% else %>
 
- <h1 class="display-4 text-center" style: "text-align: center">Mostrando <%= @dog.name %></h1>
-
- <%= simple_form_for @dog, :html => {:class => "form-horizontal center"} do |f| %>
-<% if @dog.picture.attached? %>
-   <img class="img-responsive img-thumbnail float-right rounded" src="<%=(url_for(@dog.picture)) %>" alt="Card image cap">
-<% else %>
-<div class="card float-right" style="width: 307px;height:307px;">
-  <img class="card-img-top" src="/dog-avatar.jpg" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text text-center">Este cão ainda não possui fotografia.</p>
+  <div class="card float-right" style="width: 307px;height:307px;">
+    <img class="card-img-top" src="/dog-avatar.jpg" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text text-center">Este cão ainda não possui fotografia.</p>
+    </div>
   </div>
-</div>
 
-<% end %>
+  <% end %>
 
       <div class="form-row" style="padding-left: 15px">
         <div class="form-group col-md-4">
@@ -26,7 +25,8 @@
           <%= f.input :sex, label:'Sexo', class: "form-control" , :readonly => true %>
         </div>
         <div class="form-group col-md-4">
-          <%= f.input :dob, label:'Data de Nascimento', class: "form-control", include_blank: true, :readonly => true %>
+          <label>Data de nascimento</label><br>
+          <input class="form-control" value='<%= @dog.dob %>' disabled="true"></input>
         </div>
       </div>
 
@@ -52,11 +52,13 @@
       </div>
 
       <div class="form-row" style="padding-left: 15px">
-        <div class="form-group col-md-4">
-          <%= f.input :vaccines, label:'Vacinas em dia até', class: "form-control" , include_blank: true, :readonly => true %>
+        <div class="form-group col-md-2">
+          <label>Vacinas em dia até</label><br>
+          <input class="form-control" value='<%= @dog.vaccines %>' disabled="true"></input>
         </div>
-        <div class="form-group col-md-4">
-          <%= f.input :canil, label:'Tosse do Canil em dia até', class: "form-control", include_blank: true, :readonly => true %>
+        <div class="form-group col-md-2">
+          <label>Tosse do Canil em dia até</label><br>
+          <input class="form-control" value='<%= @dog.canil %>' disabled="true"></input>
         </div>
       </div>
 

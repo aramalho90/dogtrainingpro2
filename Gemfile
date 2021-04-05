@@ -8,6 +8,8 @@ gem 'faker'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
