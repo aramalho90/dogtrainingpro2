@@ -1,0 +1,37 @@
+<div class="jumbotron">
+<h1 class="display-4 text-center" style: "text-align: center">Editar estadia</h1>
+
+<%= simple_form_for @booking, :html => {:class => "form-horizontal center"} do |f| %>
+   <%= f.error_notification %>
+   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+   <div class="form-row" style="padding-left: 15px">
+     <div class="form-group col-md-2">
+       <label style="float:left">Cão</label><br>
+       <%= f.collection_select(:dog_id, Dog.all, :id, :formatted_name, {:include_blank => true, prompt: 'Seleccione um cão'}, { class: "form-control", :disabled => "disabled" }) %>
+     </div>
+   </div>
+
+   <div class="form-row" style="padding-left:15px">
+     <div class="form-group col-md-2">
+       <%= f.input :start_date,label: 'Data de início', as: :date, html5: true, class: "form-control", :include_blank => true %>
+     </div>
+     <div class="form-group col-md-2">
+       <%= f.input :end_date,label: 'Data de fim', as: :date, html5: true, class: "form-control", :include_blank => true %>
+     </div>
+   </div>
+
+   <div class="form-row" style="padding-left: 15px">
+     <div class="form-group col-md-2">
+       <%= f.input :price,label:'Preço por dia', class: "form-control" %>
+       <%= f.input :paid,label:'Pago', class: "form-control" %>
+     </div>
+   </div>
+
+  <div style="margin: 15px">
+    <%= f.button :submit, value: 'Submeter', :class=> "btn btn-primary font-weight-bold", :style=> "margin-left:5px;color:white;" %>
+    <%= link_to 'Retornar', bookings_path, class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
+    <%= link_to 'Mostrar', @booking, class: "btn btn-secondary font-weight-bold", style: "margin-left:5px;color:white;" %>
+  </div>
+<% end %>
+

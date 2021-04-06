@@ -1,0 +1,127 @@
+<div class="h-50 d-block">
+    <div class="w-25 p-3 float-right">
+        <h4 class="display-5 text-center" style: "text-align: center">Totais do mês</h4>
+        <table class="table table-striped table-dark table-hover table-sm mb-10">
+        <thead>
+            <tr>
+                <th>Cães</th>
+                <th>Nº de noites</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @monthly_total.each do |m| %>
+            <tr>
+                <td><%= m.num_dogs %></td>
+                <td><%= m.num_days %></td>
+                <td><%= m.price %> €</td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+
+    <div class="w-50 p-3 float-left">
+        <h4 class="display-5 text-center " style: "text-align: center">Próximas estadias</h4>
+        <table class="table table-striped table-dark table-hover table-sm ">
+        <thead>
+            <tr>
+                <th colspan="1"></th>
+                <th>Nome</th>
+                <th>Data de início</th>
+                <th>Data de fim</th>
+                <th>Preço</th>
+                <th>Nº de noites</th>
+                <th>Total</th>
+                <th>Nome do dono</th>
+                <th>Contacto</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @next_bookings.each do |b| %>
+                <tr>
+                    <td><%= link_to booking_path(b.id), style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
+                    <td><%= b.name %></td>
+                    <td><%= b.start_date %></td>
+                    <td><%= b.end_date %></td>
+                    <td><%= b.price %> €</td>
+                    <td><%= b.num_nights %></td>
+                    <td><%= b.total %> €</td>
+                    <td><%= b.ownername %></td>
+                    <td><%= b.contact %></td>
+                </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<div class=" w-100 d-block float-left" >
+    <div class="w-50 p-3 mt-20 float-left">
+        <h4 class="display-5 text-center" style: "text-align: center">Estadias por pagar</h4>
+        <table class="table table-striped table-dark table-hover table-sm w-100">
+        <thead>
+            <tr>
+                <th colspan="1"></th>
+                <th>Nome</th>
+                <th>Data de início</th>
+                <th>Data de fim</th>
+                <th>Preço</th>
+                <th>Nº de noites</th>
+                <th>Total</th>
+                <th>Nome do dono</th>
+                <th>Contacto</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @due_bookings.each do |d| %>
+            <tr>
+                    <td><%= link_to booking_path(d.id), style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
+                    <td><%= d.name %></td>
+                    <td><%= d.start_date %></td>
+                    <td><%= d.end_date %></td>
+                    <td><%= d.price %> €</td>
+                    <td><%= d.num_nights %></td>
+                    <td><%= d.total %> €</td>
+                    <td><%= d.ownername %></td>
+                    <td><%= d.contact %></td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+
+    <div class="w-50 h-100 p-3 float-right">
+        <h4 class="display-5 text-center w-75 float-right" style: "text-align: center">Vacinas expiradas</h4>
+        <table class="table table-striped table-dark table-hover table-sm w-75 float-right">
+            <thead>
+                <tr>
+                    <th colspan="1"></th>
+                    <th>Nome</th>
+                    <th>Vacinas gerais</th>
+                    <th>Tosse do Canil</th>
+                    <th>Raiva</th>
+                    <th>Nome do dono</th>
+                    <th>Contacto</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            <% @due_vaccines.each do |v| %>
+            <tr>
+                <td><%= link_to dog_path(v.id), style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
+                <td><%= v.name %></td>
+                <td><%= v.vaccines %></td>
+                <td><%= v.canil %></td>
+                <td><%= v.rabies %></td>
+                <td><%= v.ownername %></td>
+                <td><%= v.contact %></td>
+            </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
