@@ -106,7 +106,45 @@
         </div>
       </div>
 
+        <hr class="my-4 h-25">
+
+    <% if @dog.bookings.present? %>
+
+    <table class="table table-striped table-dark table-hover">
+      <thead>
+        <tr>
+            <th colspan="1"></th>
+            <th><%= sort_link(@q, :start_date, 'Data inicio') %></th>
+            <th><%= sort_link(@q, :end_date, 'Data fim') %></th>
+            <th>Preço</th>
+            <th>Pago</th>
+            <th>Num Noites</th>
+            <th>Preço Total</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @bookings.each do |b| %>
+          <tr>
+            <td><%= link_to booking_path(b.id), style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
+            <td><%= b.start_date %></td>
+            <td><%= b.end_date %></td>
+            <td><%= b.price %> €</td>
+            <td><%= to_yesorno(b.paid) %></td>
+            <td><%= (b.end_date - b.start_date).to_i %></td>
+            <td><%= number_with_precision((b.end_date - b.start_date).to_i * b.price,significant: true) %> €</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+    <br>
+    <div class="digg_pagination">
+        <%= will_paginate @bookings, :container => false %>
     </div>
+    <br>
+
+</div>
 
     <div style="margin: 15px">
         <%= link_to 'Editar', edit_dog_path(@dog), class: "btn btn-warning font-weight-bold ", style: "margin-left:5px;color:black;" %>
