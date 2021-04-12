@@ -1,7 +1,7 @@
 class Dog < ApplicationRecord
 
 has_one_attached :picture
-has_many :bookings
+has_many :bookings, dependent: :delete_all
 
 GENDER =
 [

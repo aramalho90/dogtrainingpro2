@@ -18,7 +18,7 @@ class HomeController < ApplicationController
                                                                                                   order by start_date, end_date asc
                                                                                                       ")
 
-      @due_vaccines = Booking.find_by_sql("SELECT * from dogs
+      @due_vaccines = Dog.find_by_sql("SELECT * from dogs
                                                     where (vaccines is not null and vaccines < NOW())
                                                         or (canil is not null and canil < NOW())
                                                             or (rabies is not null and rabies < NOW())")

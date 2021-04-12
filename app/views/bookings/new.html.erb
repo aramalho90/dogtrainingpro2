@@ -9,7 +9,7 @@
    <div class="form-row" style="padding-left: 15px">
      <div class="form-group col-md-2">
        <label style="float:left">Cão</label><br>
-       <%= f.collection_select(:dog_id, Dog.all, :id, :formatted_name, {:include_blank => true, prompt: 'Seleccione um cão'}, { class: "form-control", :required => true}) %>
+       <%= f.collection_select(:dog_id, Dog.all, :id, :formatted_name, { prompt: 'Seleccione um cão'}, { class: "form-control", :required => true}) %>
      </div>
    </div>
 

@@ -46,10 +46,10 @@
 
       <div class="form-row" style="padding-left: 15px">
         <div class="form-group col-md-4">
-          <%= f.input :vaccines, label:'Vacinas em dia até', class: "form-control" , include_blank: true %>
+          <%= f.input :vaccines,label: 'Vacinas em dia até', as: :date, html5: true, class: "form-control", :include_blank => true %>
         </div>
         <div class="form-group col-md-4">
-          <%= f.input :canil, label:'Tosse do Canil em dia até', class: "form-control", include_blank: true %>
+          <%= f.input :canil,label: 'Tosse do Canil em dia até', as: :date, html5: true, class: "form-control", :include_blank => true %>
         </div>
       </div>
 
@@ -93,11 +93,10 @@
         </div>
       </div>
 
-    </div>
-
     <div style="margin: 15px">
         <%= f.button :submit, value: 'Submeter', :class=> "btn btn-primary font-weight-bold", :style=> "margin-left:5px;color:white;" %>
         <%= link_to 'Retornar', dogs_path, class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
     </div>
+   </div>
 
  <% end %>
