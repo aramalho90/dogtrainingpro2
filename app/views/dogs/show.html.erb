@@ -119,7 +119,8 @@
             <th>Preço</th>
             <th>Pago</th>
             <th>Num Noites</th>
-            <th>Preço Total</th>
+            <th>Preço Calculado</th>
+            <th>Preço Final</th>
         </tr>
       </thead>
 
@@ -133,19 +134,34 @@
             <td><%= to_yesorno(b.paid) %></td>
             <td><%= (b.end_date - b.start_date).to_i %></td>
             <td><%= number_with_precision((b.end_date - b.start_date).to_i * b.price,significant: true) %> €</td>
+            <td><% if b.changed_price.present? %><%= b.changed_price %>€<% end %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+
+        <table class="table table-striped table-dark table-hover text-center fs-1">
+          <thead>
+            <tr>
+              <th style="font-size: 140%">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+                <% @total.each do |t| %>
+            <tr>
+              <td style="font-size: 140%"><%= t.total %>€</td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
     <% end %>
     <br>
+</div>
     <div class="digg_pagination">
         <%= will_paginate @bookings, :container => false %>
     </div>
     <br>
-
-</div>
-
     <div style="margin: 15px">
         <%= link_to 'Editar', edit_dog_path(@dog), class: "btn btn-warning font-weight-bold ", style: "margin-left:5px;color:black;" %>
         <%= link_to 'Retornar', dogs_path, class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>

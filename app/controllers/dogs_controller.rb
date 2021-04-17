@@ -7,6 +7,7 @@ class DogsController < ApplicationController
    #@dogs = Dog.all
    @q = Dog.ransack(params[:q])
    @dogs = @q.result().paginate(page: params[:page], per_page: 15)
+
   end
   # GET /dogs/1
   # GET /dogs/1.json
@@ -14,6 +15,12 @@ class DogsController < ApplicationController
     @dog = Dog.find(params[:id])
     @q = @dog.bookings.ransack(params[:q])
     @bookings = @q.result().paginate(page: params[:page], per_page: 10)
+
+
+   @total = Booking.find_by_sql(["SELECT round(sum(q.total),0) as total FROM
+                                                 ( SELECT case when changed_price is null or changed_price=0 then (price * (end_date - start_date)) else changed_price end as total
+                                                      from bookings b join dogs d on b.dog_id = d.id
+                                                           where d.id = ?) as q",params[:id]])
   end
 
   # GET /dogs/new

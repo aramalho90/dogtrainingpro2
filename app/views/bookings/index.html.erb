@@ -40,9 +40,8 @@
         <td><%= (booking.end_date - booking.start_date).to_i %></td>
         <td><%= number_with_precision((booking.end_date - booking.start_date).to_i * booking.price,significant: true) %> €</td>
         <td><% if booking.changed_price.present? %>
-                    <%= booking.changed_price %>
-                    <% else %> 0
-                    <% end %>€</td>
+                    <%= booking.changed_price %>€
+                    <% end %></td>
         <td><%= booking.dog.name %></td>
         <td><%= booking.dog.ownername %></td>
       </tr>
