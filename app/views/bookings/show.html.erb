@@ -51,8 +51,15 @@
      <input class="form-control" value='<%= (@booking.end_date - @booking.start_date).to_i %>' disabled="true"></input>
    </div>
    <div class="form-group col-md-2">
-     <label>Preço total</label><br>
+     <label>Preço Calculado</label><br>
      <input class="form-control" value='<%= number_with_precision((@booking.end_date - @booking.start_date).to_i * @booking.price,significant: true) %> €' disabled="true"></input>
+   </div>
+   <div class="form-group col-md-2">
+     <label>Preço Final</label><br>
+     <input class="form-control" value='<% if @booking.changed_price.present? %>
+                                                            <%= @booking.changed_price %>€
+                                                            <% else %> 0€
+                                                            <% end %>' disabled="true"></input>
    </div>
  </div>
 
