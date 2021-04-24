@@ -46,10 +46,16 @@
 
       <div class="form-row" style="padding-left: 15px">
         <div class="form-group col-md-4">
-          <%= f.input :vaccines,label: 'Vacinas em dia até', as: :date, html5: true, class: "form-control", :include_blank => true %>
+          <label>Vacinas em dia até</label><br>
+          <%= f.text_field :vaccines, type: 'date', class: "form-control" , include_blank: true %>
         </div>
         <div class="form-group col-md-4">
-          <%= f.input :canil,label: 'Tosse do Canil em dia até', as: :date, html5: true, class: "form-control", :include_blank => true %>
+          <label>Tosse do Canil em dia até</label><br>
+          <%= f.text_field :canil,type: 'date', class: "form-control", include_blank: true %>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Raiva em dia até</label><br>
+          <%= f.text_field :rabies,type: 'date', class: "form-control", include_blank: true %>
         </div>
       </div>
 
