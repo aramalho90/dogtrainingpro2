@@ -1,0 +1,112 @@
+<%= form_with(model: dog) do |form| %>
+  <% if dog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dog.errors.count, "error") %> prohibited this dog from being saved:</h2>
+
+      <ul>
+        <% dog.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sex %>
+    <%= form.text_field :sex %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dob %>
+    <%= form.date_select :dob %>
+  </div>
+
+  <div class="field">
+    <%= form.label :breed %>
+    <%= form.text_field :breed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.text_field :color %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chip %>
+    <%= form.text_field :chip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vaccines %>
+    <%= form.date_select :vaccines %>
+  </div>
+
+  <div class="field">
+    <%= form.label :canil %>
+    <%= form.date_select :canil %>
+  </div>
+
+  <div class="field">
+    <%= form.label :allergies %>
+    <%= form.text_field :allergies %>
+  </div>
+
+  <div class="field">
+    <%= form.label :obs %>
+    <%= form.text_field :obs %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ownername %>
+    <%= form.text_field :ownername %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact %>
+    <%= form.text_field :contact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zipcode %>
+    <%= form.text_field :zipcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nif %>
+    <%= form.text_field :nif %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :referral %>
+    <%= form.text_field :referral %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

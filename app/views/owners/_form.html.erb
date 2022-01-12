@@ -1,0 +1,62 @@
+<%= form_with(model: owner) do |form| %>
+  <% if owner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
+
+      <ul>
+        <% owner.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact %>
+    <%= form.text_field :contact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zipcode %>
+    <%= form.text_field :zipcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nif %>
+    <%= form.text_field :nif %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :referral %>
+    <%= form.text_field :referral %>
+  </div>
+
+  <div class="field">
+    <%= form.label :obs %>
+    <%= form.text_field :obs %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

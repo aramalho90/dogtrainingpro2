@@ -1,0 +1,47 @@
+<div class="jumbotron">
+
+ <h1 class="display-4 text-center" style: "text-align: center">Adicionar cão</h1>
+
+ <%= simple_form_for @owner, :html => {:class => "form-horizontal center"} do |f| %>
+   <%= f.error_notification %>
+   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :name, label:'Nome', class: "form-control" %>
+        </div>
+        <div class="form-group col-md-2">
+          <%= f.input :contact, label:'Contacto', class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :email, label:'Email', class: "form-control" %>
+        </div>
+        <div class="form-group col-md-2">
+          <%= f.input :nif, label:'NIF', class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :address, label:'Morada', class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.input :city, label:'Localidade', class: "form-control" %>
+        </div>
+
+        <div class="form-group col-md-2">
+          <%= f.input :zipcode, label:'Código postal', class: "form-control" %>
+        </div>
+      </div>
+
+    <div style="margin: 15px">
+        <%= f.button :submit, value: 'Submeter', :class=> "btn btn-primary font-weight-bold", :style=> "margin-left:5px;color:white;" %>
+        <%= link_to 'Retornar', owners_path, class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
+    </div>
+   </div>
+
+ <% end %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<br>
+<table class="table table-striped table-dark table-hover">
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Contacto</th>
+      <th>Cidade</th>
+      <th>Observações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @owners.each do |owner| %>
+      <tr>
+        <td><%= link_to owner, style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
+        <td><%= link_to edit_owner_path(owner), style:"color:white;" do %><i class="fas fa-pencil-alt"></i><% end %></td>
+        <td><%= link_to owner, style:"color:white;", method: :delete, data: { confirm: 'Apagar este dono? Todos os caẽs e treinos serão apagados' } do %><i class="fas fa-trash-alt"></i><% end %></td>
+        <td><%= owner.name %></td>
+        <td><%= owner.email %></td>
+        <td><%= owner.contact %></td>
+        <td><%= owner.city %></td>
+        <td><%= owner.obs %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'Adicionar dono', new_owner_path, class: "btn btn-primary font-weight-bold", style: "margin-left:5px;color:white;" %>

@@ -1,46 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<%= search_form_for @q do |f| %>
-  <%= f.search_field :name_cont, placeholder: 'Nome' %>
-  <%= f.search_field :ownername_cont, placeholder: 'Nome do dono' %>
-  <%= f.search_field :breed_cont, placeholder: 'Raça' %>
-  <%= f.submit %>
-<% end %>
-<br>
-<table class="table table-striped table-dark table-hover">
+<h1>Dogs</h1>
+
+<table>
   <thead>
     <tr>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Dob</th>
+      <th>Breed</th>
+      <th>Color</th>
+      <th>Weight</th>
+      <th>Chip</th>
+      <th>Vaccines</th>
+      <th>Canil</th>
+      <th>Allergies</th>
+      <th>Obs</th>
       <th colspan="3"></th>
-      <th><%= sort_link(@q, :name, 'Nome') %></th>
-      <th>Sexo</th>
-      <th><%= sort_link(@q, :breed, 'Raça') %></th>
-      <th>Cor</th>
-      <th><%= sort_link(@q, :ownername, 'Nome do dono') %></th>
-      <th>Contacto</th>
-      <th>Observações</th>
     </tr>
   </thead>
 
   <tbody>
     <% @dogs.each do |dog| %>
       <tr>
-        <td><%= link_to dog, style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
-        <td><%= link_to edit_dog_path(dog), style:"color:white;" do %><i class="fas fa-pencil-alt"></i><% end %></td>
-        <td><%= link_to dog, style:"color:white;", method: :delete, data: { confirm: 'Apagar esta entrada?' } do %><i class="fas fa-trash-alt"></i><% end %></td>
         <td><%= dog.name %></td>
         <td><%= dog.sex %></td>
+        <td><%= dog.dob %></td>
         <td><%= dog.breed %></td>
         <td><%= dog.color %></td>
+        <td><%= dog.weight %></td>
+        <td><%= dog.chip %></td>
+        <td><%= dog.vaccines %></td>
+        <td><%= dog.canil %></td>
+        <td><%= dog.allergies %></td>
+        <td><%= dog.obs %></td>
         <td><%= dog.ownername %></td>
         <td><%= dog.contact %></td>
-        <td><%= dog.obs %></td>
+        <td><%= dog.address %></td>
+        <td><%= dog.zipcode %></td>
+        <td><%= dog.city %></td>
+        <td><%= dog.nif %></td>
+        <td><%= dog.email %></td>
+        <td><%= dog.referral %></td>
+        <td><%= link_to 'Show', dog %></td>
+        <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
+        <td><%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
 <br>
-<div class="digg_pagination">
-    <%= will_paginate @dogs, :container => false %>
-</div>
-<br>
-<%= link_to 'Adicionar cão', new_dog_path, class: "btn btn-primary font-weight-bold", style: "margin-left:5px;color:white;" %>
+
+<%= link_to 'New Dog', new_dog_path %>
