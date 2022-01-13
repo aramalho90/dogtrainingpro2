@@ -1,49 +1,48 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron">
 
-<p>
-  <strong>Name:</strong>
-  <%= @owner.name %>
-</p>
+ <h1 class="display-4 text-center" style: "text-align: center">Mostrando <%= @owner.name %></h1>
+<br>
+ <%= simple_form_for @owner, :html => {:class => "form-horizontal center"} do |f| %>
+   <%= f.error_notification %>
+   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<p>
-  <strong>Contact:</strong>
-  <%= @owner.contact %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :name, label:'Nome', class: "form-control", :readonly => true  %>
+        </div>
+        <div class="form-group col-md-2">
+          <%= f.input :contact, label:'Contacto', class: "form-control", :readonly => true  %>
+        </div>
+      </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @owner.address %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :email, label:'Email', class: "form-control", :readonly => true  %>
+        </div>
+        <div class="form-group col-md-2">
+          <%= f.input :nif, label:'NIF', class: "form-control", :readonly => true  %>
+        </div>
+      </div>
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @owner.zipcode %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :address, label:'Morada', class: "form-control", type: "text", :readonly => true  %>
+        </div>
 
-<p>
-  <strong>City:</strong>
-  <%= @owner.city %>
-</p>
+        <div class="form-group col-md-2">
+          <%= f.input :city, label:'Localidade', class: "form-control", :readonly => true  %>
+        </div>
 
-<p>
-  <strong>Nif:</strong>
-  <%= @owner.nif %>
-</p>
+        <div class="form-group col-md-2">
+          <%= f.input :zipcode, label:'Código postal', class: "form-control", :readonly => true  %>
+        </div>
+      </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @owner.email %>
-</p>
+    <div style="margin: 15px">
+        <%= link_to 'Editar', edit_owner_path(@owner), class: "btn btn-warning font-weight-bold ", style: "margin-left:5px;color:black;" %>
+        <%= link_to 'Retornar', owner_path, class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
+    </div>
 
-<p>
-  <strong>Referral:</strong>
-  <%= @owner.referral %>
-</p>
+    </div>
 
-<p>
-  <strong>Obs:</strong>
-  <%= @owner.obs %>
-</p>
-
-<%= link_to 'Edit', edit_owner_path(@owner) %> |
-<%= link_to 'Back', owners_path %>
+ <% end %>
