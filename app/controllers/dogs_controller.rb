@@ -3,8 +3,9 @@ class DogsController < ApplicationController
 
   # GET /dogs or /dogs.json
   def index
-    @dogs = Dog.all
-  end
+    @q = Dog.ransack(params[:q])
+    @dogs = @q.result().paginate(page: params[:page], per_page: 10)
+    end
 
   # GET /dogs/1 or /dogs/1.json
   def show
@@ -65,6 +66,6 @@ class DogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dog_params
-      params.require(:dog).permit(:name, :sex, :dob, :breed, :color, :weight, :chip, :vaccines, :canil, :allergies, :obs, :ownername, :contact, :address, :zipcode, :city, :nif, :email, :referral)
+      params.require(:dog).permit(:name, :sex, :dob, :breed, :color, :weight, :chip, :vaccines, :canil, :allergies, :obs, :owner_id)
     end
 end

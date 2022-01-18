@@ -3,7 +3,9 @@ class OwnersController < ApplicationController
 
   # GET /owners or /owners.json
   def index
-    @owners = Owner.all
+    @q = Owner.ransack(params[:q])
+    @owners = @q.result().paginate(page: params[:page], per_page: 10)
+
   end
 
   # GET /owners/1 or /owners/1.json

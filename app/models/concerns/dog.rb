@@ -1,6 +1,6 @@
 class Dog < ApplicationRecord
 
-belongs_to :dog
+belongs_to :owner
 
 GENDER =
 [
