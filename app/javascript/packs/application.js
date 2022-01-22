@@ -17,15 +17,14 @@ global.$ = require("jquery")
 require("jquery") // Don't really need to require this...
 require("jquery-ui")
 
-$(function(){
-    // Plain jquery
-    $('#fadeMe').fadeOut(5000);
+document.addEventListener("turbolinks:load", function() {
+  $(function(){
 
-    // jquery-ui
-    const availableCities = ['Baltimore', 'New York'];
-    $('#dog_owner_name').autocomplete( { source: $('#dog_owner_name').data('autocomplete-source') } );
-    $('#calendarField').datepicker( { dateFormat: 'yy-mm-dd' } );
+      $('#dog_owner_name').autocomplete( { source: $('#dog_owner_name').data('autocomplete-source') } );
+
+  })
 })
+
 
 
 Rails.start()

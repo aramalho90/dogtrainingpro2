@@ -1,3 +1,26 @@
 // Place all the styles related to the dogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+ul.ui-autocomplete {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #111111;
+  cursor: default;
+  li {
+    background-color: #111111;
+    border-top: solid 1px #111111;
+    margin: 0;
+    padding: 0;
+    a {
+      color: #111111;
+      display: block;
+      padding: 3px;
+    }
+    a.ui-state-hover, a.ui-state-active {
+      background-color: #111111;
+      color: #111111;
+    }
+  }
+}
