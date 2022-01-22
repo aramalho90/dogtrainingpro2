@@ -16,7 +16,7 @@
        <div class="form-row" style="padding-left: 15px">
          <div class="form-group col-md-2">
            <label style="float:left">Dono</label><br>
-           <%= f.collection_select(:owner_id, Owner.order('name ASC'), :id, :formatted_name, { prompt: 'Seleccione um dono'}, { class: "form-control", :required => true}) %>
+           <%= f.text_field :owner_name, data: {autocomplete_source: Owner.order(:name).map(&:name)} %>
          </div>
        </div>
       <div class="form-row" style="padding-left: 15px">
