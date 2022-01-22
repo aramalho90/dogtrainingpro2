@@ -1,6 +1,71 @@
-<h1>Editing Dog</h1>
+<div class="jumbotron">
 
-<%= render 'form', dog: @dog %>
+ <h1 class="display-4 text-center" style: "text-align: center">Editando <%= @dog.name %></h1>
 
-<%= link_to 'Show', @dog %> |
-<%= link_to 'Back', dogs_path %>
+ <%= simple_form_for @dog, :html => {:class => "form-horizontal center"} do |f| %>
+   <%= f.error_notification %>
+   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <%= f.input :name,label:'Nome', class: "form-control" %>
+            <%= f.label 'Fotografia' %><br>
+            <%= f.file_field :picture %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-2">
+          <%= f.input :sex, label:'Sexo', class: "form-control" , collection: Dog::GENDER %>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Data de nascimento</label><br>
+          <%= f.text_field :dob,type: 'date', class: "form-control", include_blank: true %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-4">
+            <%= f.input :breed,label:'Raça', class: "form-control" %>
+         </div>
+         <div class="form-group col-md-2">
+            <%= f.input :color,label:'Cor', class: "form-control" %>
+         </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-2">
+            <%= f.input :weight,label:'Peso', class: "form-control" %>
+         </div>
+         <div class="form-group col-md-2">
+            <%= f.input :chip,label:'Chip no.', class: "form-control" %>
+         </div>
+         <div class="form-group col-md-4">
+             <%= f.input :allergies,label:'Alergias', class: "form-control" %>
+          </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Vacinas em dia até</label><br>
+          <%= f.text_field :vaccines, type: 'date', class: "form-control" , include_blank: true %>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Tosse do Canil em dia até</label><br>
+          <%= f.text_field :canil,type: 'date', class: "form-control", include_blank: true %>
+        </div>
+     </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-8">
+          <%= f.input :obs, label:'Observações', class: "form-control" %>
+        </div>
+      </div>
+    <div style="margin: 15px">
+        <%= f.button :submit, value: 'Submeter', :class=> "btn btn-primary font-weight-bold", :style=> "margin-left:5px;color:white;" %>
+        <%= link_to 'Retornar', dogs_path, class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
+        <%= link_to 'Mostrar', @dog, class: "btn btn-secondary font-weight-bold", style: "margin-left:5px;color:white;" %>
+    </div>
+    </div>
+
+ <% end %>

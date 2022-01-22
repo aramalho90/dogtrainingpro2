@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_134547) do
+ActiveRecord::Schema.define(version: 2022_01_22_095317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,22 +43,9 @@ ActiveRecord::Schema.define(version: 2021_04_17_134547) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "bookings", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
-    t.decimal "price"
-    t.boolean "paid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "dog_id", null: false
-    t.string "obs"
-    t.decimal "changed_price"
-    t.index ["dog_id"], name: "index_bookings_on_dog_id"
-  end
-
   create_table "dogs", force: :cascade do |t|
     t.string "name"
-    t.string "sex", limit: 1
+    t.string "sex"
     t.date "dob"
     t.string "breed"
     t.string "color"
@@ -67,10 +54,14 @@ ActiveRecord::Schema.define(version: 2021_04_17_134547) do
     t.date "vaccines"
     t.date "canil"
     t.string "allergies"
-    t.text "obs"
+    t.string "obs"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "ownername"
+    t.bigint "owner_id"
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.string "name"
     t.string "contact"
     t.string "address"
     t.string "zipcode"
@@ -78,10 +69,11 @@ ActiveRecord::Schema.define(version: 2021_04_17_134547) do
     t.integer "nif"
     t.string "email"
     t.string "referral"
-    t.date "rabies"
+    t.string "obs"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bookings", "dogs"
 end
