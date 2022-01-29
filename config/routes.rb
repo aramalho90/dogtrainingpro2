@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :ptmaps
+  resources :groupmaps
   resources :owners
   resources :dogs
     root 'home#index'

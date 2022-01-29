@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_095317) do
+ActiveRecord::Schema.define(version: 2022_01_29_194149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,11 @@ ActiveRecord::Schema.define(version: 2022_01_22_095317) do
     t.bigint "owner_id"
   end
 
+  create_table "groupmaps", force: :cascade do |t|
+    t.string "time"
+    t.decimal "limit", precision: 5
+  end
+
   create_table "owners", force: :cascade do |t|
     t.string "name"
     t.string "contact"
@@ -70,6 +75,13 @@ ActiveRecord::Schema.define(version: 2022_01_22_095317) do
     t.string "email"
     t.string "referral"
     t.string "obs"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ptmaps", force: :cascade do |t|
+    t.string "day"
+    t.decimal "limit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
