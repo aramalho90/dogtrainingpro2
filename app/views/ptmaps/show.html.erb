@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @ptmap.day %>
+</p>
+
+<p>
+  <strong>Limit:</strong>
+  <%= @ptmap.limit %>
+</p>
+
+<%= link_to 'Edit', edit_ptmap_path(@ptmap) %> |
+<%= link_to 'Back', ptmaps_path %>

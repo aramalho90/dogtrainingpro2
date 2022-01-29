@@ -1,0 +1,33 @@
+<br>
+<table class="table table-striped table-dark table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Dia da Semana</th>
+      <th>Limite</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ptmaps.each do |ptmap| %>
+      <tr>
+        <td><%= ptmap.id %></td>
+        <td><%= ptmap.day %></td>
+        <td><%= simple_form_for ptmap, method: :put do |f|%>
+                       <%= f.input_field :limit, value: number_with_precision(f.object.limit, precision: 0) %>
+                       <%= f.submit 'Alterar'%>
+                   <%end%>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

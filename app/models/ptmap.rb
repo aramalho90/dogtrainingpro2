@@ -1,0 +1,2 @@
+class Ptmap < ApplicationRecord
+end

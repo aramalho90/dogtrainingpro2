@@ -1,0 +1,3 @@
+class Groupmap < ApplicationRecord
+
+end
