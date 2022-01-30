@@ -1,0 +1,31 @@
+ul.ui-autocomplete {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #ee9650;
+  cursor: default;
+  li {
+    color: #000000;
+    background-color: #e9ecef;
+    border: solid 2px #ee9650;
+    margin: 0;
+    padding: 0;
+    a {
+      color: #000;
+      display: block;
+      padding: 3px;
+    }
+    a.ui-state-hover, a.ui-state-active {
+      background-color: #ec2323;
+    }
+  }
+}
+
+.ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+    background: #ee9650 !important;
+    color: #000000;
+    border: solid 2px #ee9650;
+    font-weight: bold ;
+
+}
