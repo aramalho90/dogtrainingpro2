@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Grouptrains</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Teoric1</th>
+      <th>Teoric2</th>
+      <th>Inscr paid</th>
+      <th>Teoric paid</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grouptrains.each do |grouptrain| %>
+      <tr>
+        <td><%= grouptrain.teoric1 %></td>
+        <td><%= grouptrain.teoric2 %></td>
+        <td><%= grouptrain.inscr_paid %></td>
+        <td><%= grouptrain.teoric_paid %></td>
+        <td><%= grouptrain.status %></td>
+        <td><%= link_to 'Show', grouptrain %></td>
+        <td><%= link_to 'Edit', edit_grouptrain_path(grouptrain) %></td>
+        <td><%= link_to 'Destroy', grouptrain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Grouptrain', new_grouptrain_path %>

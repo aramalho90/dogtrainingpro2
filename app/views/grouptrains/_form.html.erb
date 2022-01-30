@@ -1,0 +1,17 @@
+
+<%= simple_form_for(@grouptrain) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :teoric1 %>
+    <%= f.input :teoric2 %>
+    <%= f.input :inscr_paid %>
+    <%= f.input :teoric_paid %>
+    <%= f.input :status %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
