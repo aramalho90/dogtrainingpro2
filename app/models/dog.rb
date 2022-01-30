@@ -2,6 +2,7 @@ class Dog < ApplicationRecord
 
 belongs_to :owner
 has_one_attached :picture
+has_many :grouptrain
 
 GENDER =
 [

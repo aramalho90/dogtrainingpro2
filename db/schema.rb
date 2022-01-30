@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_29_194149) do
+ActiveRecord::Schema.define(version: 2022_01_30_191352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 2022_01_29_194149) do
     t.decimal "limit", precision: 5
   end
 
+  create_table "grouptrains", force: :cascade do |t|
+    t.date "teoric1"
+    t.date "teoric2"
+    t.boolean "inscr_paid"
+    t.boolean "teoric_paid"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "owners", force: :cascade do |t|
     t.string "name"
     t.string "contact"
@@ -82,8 +92,6 @@ ActiveRecord::Schema.define(version: 2022_01_29_194149) do
   create_table "ptmaps", force: :cascade do |t|
     t.string "day"
     t.decimal "limit"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
