@@ -9,6 +9,13 @@ class DogsController < ApplicationController
 
   # GET /dogs/1 or /dogs/1.json
   def show
+    @dog = Dog.find(params[:id])
+    @g = @dog.grouptrains.ransack(params[:q])
+    @grouptrains = @g.result().paginate(page: params[:grouptrains_page], per_page: 5)
+
+    @p = @dog.pttrains.ransack(params[:q])
+    @pttrains = @p.result().paginate(page: params[:pttrains_page], per_page: 5)
+
   end
 
   # GET /dogs/new

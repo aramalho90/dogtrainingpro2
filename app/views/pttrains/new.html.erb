@@ -40,7 +40,20 @@
           <%= f.text_field :test4,type: 'date', class: "form-control", include_blank: true %>
         </div>
       </div>
-    <br>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Quinta passagem de testemunho</label><br>
+          <%= f.text_field :test5,type: 'date', class: "form-control", include_blank: true %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Data de inscrição</label><br>
+          <%= f.text_field :inscr_date, type: 'date', class: "form-control", include_blank: true %>
+        </div>
+      </div>
 
       <div class="form-row" style="padding-left: 15px">
        <%= f.input :inscr_paid,label:'Inscrição paga', class: "form-control" %>

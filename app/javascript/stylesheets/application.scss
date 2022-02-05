@@ -4,6 +4,15 @@ img{
     max-width:360px;
     max-height:360px;
 }
+
+td.ellipsis{
+  white-space: nowrap;
+  width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+   display: inline-block;
+}
+
 .digg_pagination {
   background: white;
   cursor: default;

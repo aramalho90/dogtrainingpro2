@@ -68,6 +68,91 @@
         </div>
       </div>
 
+    <% if @dog.grouptrains.present? %>
+    <br>
+  <h3 class="text-center" style: "text-align: center"> Treino de grupo</h3>
+    <br>
+    <table class="table table-striped table-dark table-hover">
+      <thead>
+        <tr>
+            <th colspan="1"></th>
+            <th>Hora</th>
+            <th>Primeira teórica</th>
+            <th>Segunda teórica</th>
+            <th>Data de inscrição</th>
+            <th>Inscrição paga</th>
+            <th>Teórica paga</th>
+            <th>Estado</th>
+            <th>Observações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @grouptrains.each do |g| %>
+          <tr>
+            <td><%= link_to grouptrain_path(g.id), style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
+            <td><%= g.groupmap.time %></td>
+            <td><%= g.teoric1%></td>
+            <td><%= g.teoric2%></td>
+            <td><%= g.inscr_date%></td>
+            <td><%= to_yesorno(g.inscr_paid)%></td>
+            <td><%= to_yesorno(g.teoric_paid)%></td>
+            <td><%= g.status%></td>
+            <td class="ellipsis"><%= g.obs%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="digg_pagination" style="background-color: #e9ecef">
+        <%= will_paginate @grouptrains, :container => false, :param_name => 'grouptrains_page' %>
+    </div>
+    <% end %>
+
+    <% if @dog.pttrains.present? %>
+    <br>
+  <h3 class="text-center" style: "text-align: center"> Treino PT</h3>
+    <br>    <table class="table table-striped table-dark table-hover">
+      <thead>
+        <tr>
+            <th colspan="1"></th>
+            <th>Dia da semana</th>
+            <th>1ª pass. de testemunho</th>
+            <th>2ª pass. de testemunho</th>
+            <th>3ª pass. de testemunho</th>
+            <th>4ª pass. de testemunho</th>
+            <th>5ª pass. de testemunho</th>
+            <th>Data de inscrição</th>
+            <th>Inscrição paga</th>
+            <th>Estado</th>
+            <th>Observações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @pttrains.each do |p| %>
+          <tr>
+            <td><%= link_to pttrain_path(p.id), style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
+            <td><%= p.ptmap.day %></td>
+            <td><%= p.test1 %></td>
+            <td><%= p.test2 %></td>
+            <td><%= p.test3 %></td>
+            <td><%= p.test4 %></td>
+            <td><%= p.test5 %></td>
+            <td><%= p.inscr_date %></td>
+            <td><%= to_yesorno(p.inscr_paid)%></td>
+            <td><%= p.status %></td>
+            <td class="ellipsis"><%= p.obs %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="digg_pagination" style="background-color: #e9ecef">
+        <%= will_paginate @pttrains, :container => false, :param_name => 'pttrains_page' %>
+    </div>
+    <% end %>
+
     <br>
     <div style="margin: 15px">
         <%= link_to 'Editar', edit_dog_path(@dog), class: "btn btn-warning font-weight-bold ", style: "margin-left:5px;color:black;" %>
