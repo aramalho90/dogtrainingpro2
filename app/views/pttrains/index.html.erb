@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pttrains</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test1</th>
+      <th>Test2</th>
+      <th>Test3</th>
+      <th>Test4</th>
+      <th>Inscr paid</th>
+      <th>Status</th>
+      <th>Obs</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pttrains.each do |pttrain| %>
+      <tr>
+        <td><%= pttrain.test1 %></td>
+        <td><%= pttrain.test2 %></td>
+        <td><%= pttrain.test3 %></td>
+        <td><%= pttrain.test4 %></td>
+        <td><%= pttrain.inscr_paid %></td>
+        <td><%= pttrain.status %></td>
+        <td><%= pttrain.obs %></td>
+        <td><%= link_to 'Show', pttrain %></td>
+        <td><%= link_to 'Edit', edit_pttrain_path(pttrain) %></td>
+        <td><%= link_to 'Destroy', pttrain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pttrain', new_pttrain_path %>

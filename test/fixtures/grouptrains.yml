@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  teoric1: 2022-01-30
+  teoric2: 2022-01-30
+  inscr_paid: false
+  teoric_paid: false
+  status: MyString
+
+two:
+  teoric1: 2022-01-30
+  teoric2: 2022-01-30
+  inscr_paid: false
+  teoric_paid: false
+  status: MyString

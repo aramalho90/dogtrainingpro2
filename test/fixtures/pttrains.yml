@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  test1: 
+  test2: 
+  test3: 
+  test4: 
+  inscr_paid: 
+  status: 
+  obs: MyString
+
+two:
+  test1: 
+  test2: 
+  test3: 
+  test4: 
+  inscr_paid: 
+  status: 
+  obs: MyString

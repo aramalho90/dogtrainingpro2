@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pttrains
   resources :grouptrains
   resources :ptmaps
   resources :groupmaps

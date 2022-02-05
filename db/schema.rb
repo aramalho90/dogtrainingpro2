@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_30_191352) do
+ActiveRecord::Schema.define(version: 2022_02_05_124216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,9 @@ ActiveRecord::Schema.define(version: 2022_01_30_191352) do
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "obs"
+    t.bigint "dog_id"
+    t.bigint "groupmap_id"
   end
 
   create_table "owners", force: :cascade do |t|
@@ -92,6 +95,18 @@ ActiveRecord::Schema.define(version: 2022_01_30_191352) do
   create_table "ptmaps", force: :cascade do |t|
     t.string "day"
     t.decimal "limit"
+  end
+
+  create_table "pttrains", force: :cascade do |t|
+    t.date "test1"
+    t.date "test2"
+    t.date "test3"
+    t.date "test4"
+    t.boolean "inscr_paid"
+    t.string "status"
+    t.string "obs"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
