@@ -70,11 +70,9 @@
 
     <br>
     <div style="margin: 15px">
-    <%= link_to "Add Product", new_product_path(:param1 => "value1", :param2 => "value2") %>
-
         <%= link_to 'Editar', edit_dog_path(@dog), class: "btn btn-warning font-weight-bold ", style: "margin-left:5px;color:black;" %>
         <%= link_to 'Retornar', dogs_path, class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
-        <%= link_to 'Adicionar treino de grupo', new_grouptrain_path(dog_id: @dog.id) class: "btn btn-primary font-weight-bold ", style: "margin-left:5px;color:white;" %>
+        <%= link_to 'Adicionar treino de grupo', new_grouptrain_path(:dog => @dog), class: "btn btn-primary font-weight-bold ", style: "margin-left:5px;color:white;" %>
     </div>
 
  <% end %>

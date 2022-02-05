@@ -13,6 +13,7 @@ class GrouptrainsController < ApplicationController
   # GET /grouptrains/new
   def new
     @grouptrain = Grouptrain.new
+    @dog =  Dog.find(params[:dog])
   end
 
   # GET /grouptrains/1/edit
@@ -25,7 +26,7 @@ class GrouptrainsController < ApplicationController
 
     respond_to do |format|
       if @grouptrain.save
-        format.html { redirect_to @grouptrain, notice: "Grouptrain was successfully created." }
+        format.html { redirect_to dog_url(@grouptrain.dog_id) }
         format.json { render :show, status: :created, location: @grouptrain }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class GrouptrainsController < ApplicationController
   def update
     respond_to do |format|
       if @grouptrain.update(grouptrain_params)
-        format.html { redirect_to @grouptrain, notice: "Grouptrain was successfully updated." }
+        format.html { redirect_to dog_url(@grouptrain.dog_id)}
         format.json { render :show, status: :ok, location: @grouptrain }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +52,7 @@ class GrouptrainsController < ApplicationController
   def destroy
     @grouptrain.destroy
     respond_to do |format|
-      format.html { redirect_to grouptrains_url, notice: "Grouptrain was successfully destroyed." }
+      format.html { redirect_to grouptrains_url }
       format.json { head :no_content }
     end
   end
@@ -64,6 +65,6 @@ class GrouptrainsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def grouptrain_params
-      params.require(:grouptrain).permit(:teoric1, :teoric2, :inscr_paid, :teoric_paid, :status)
+      params.require(:grouptrain).permit(:teoric1, :teoric2, :inscr_paid, :teoric_paid, :status, :groupmap_id, :obs, :dog_id)
     end
 end
