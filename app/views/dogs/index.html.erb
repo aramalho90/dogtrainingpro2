@@ -26,7 +26,7 @@
       <tr>
         <td><%= link_to dog, style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
         <td><%= link_to edit_dog_path(dog), style:"color:white;" do %><i class="fas fa-pencil-alt"></i><% end %></td>
-        <td><%= link_to dog, style:"color:white;", method: :delete, data: { confirm: 'Apagar esta entrada?' } do %><i class="fas fa-trash-alt"></i><% end %></td>
+        <td><%= link_to dog, style:"color:white;", method: :delete, data: { confirm: 'Apagar este cão? Todos os treinos serão apagados.' } do %><i class="fas fa-trash-alt"></i><% end %></td>
         <td><%= dog.name %></td>
         <td><%= dog.sex %></td>
         <td><%= dog.breed %></td>

@@ -3,7 +3,20 @@ class GrouptrainsController < ApplicationController
 
   # GET /grouptrains or /grouptrains.json
   def index
-    @grouptrains = Grouptrain.all
+    grouptrains = Grouptrain.select(:id, "'Treino de grupo' as type", :inscr_date, :status, :obs, :dog_id)
+    pttrains = Pttrain.select(:id, "'Treino PT' as type", :inscr_date, :status, :obs, :dog_id)
+
+    union = Grouptrain.connection.unprepared_statement do
+        "((#{grouptrains.to_sql}) UNION (#{pttrains.to_sql})) AS grouptrains"
+    end
+
+    @q = Grouptrain
+           .select('*')
+           .from(union)
+           .ransack(params[:q])
+
+    @trains = @q.result().paginate(page: params[:page], per_page: 10)
+
   end
 
   # GET /grouptrains/1 or /grouptrains/1.json

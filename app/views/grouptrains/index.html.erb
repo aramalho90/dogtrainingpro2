@@ -1,35 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Grouptrains</h1>
-
-<table>
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :dog_name_cont, placeholder: 'Nome do cão' %>
+  <%= f.search_field :dog_owner_name_cont, placeholder: 'Nome do cão' %>
+  <%= f.search_field :status_cont, placeholder: 'Estado' %>
+  <%= f.submit %>
+<% end %>
+<br>
+<table class="table table-striped table-dark table-hover">
   <thead>
     <tr>
-      <th>Teoric1</th>
-      <th>Teoric2</th>
-      <th>Inscr paid</th>
-      <th>Teoric paid</th>
-      <th>Status</th>
       <th colspan="3"></th>
+      <th>Nome do cão</th>
+      <th>Nome do dono</th>
+      <th>Tipe de treino</th>
+      <th>Data de inscriçáo</th>
+      <th>Estado</th>
+      <th>Observaçóes</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @grouptrains.each do |grouptrain| %>
+    <% @trains.each do |train| %>
       <tr>
-        <td><%= grouptrain.teoric1 %></td>
-        <td><%= grouptrain.teoric2 %></td>
-        <td><%= grouptrain.inscr_paid %></td>
-        <td><%= grouptrain.teoric_paid %></td>
-        <td><%= grouptrain.status %></td>
-        <td><%= link_to 'Show', grouptrain %></td>
-        <td><%= link_to 'Edit', edit_grouptrain_path(grouptrain) %></td>
-        <td><%= link_to 'Destroy', grouptrain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if train.type == "Treino de grupo" %>
+              <td><%= link_to grouptrain_path(train.id), style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
+            <% else %>
+              <td><%= link_to pttrain_path(train.id), style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
+            <% end %>
+
+            <% if train.type == "Treino de grupo" %>
+              <td><%= link_to edit_grouptrain_path(train.id), style:"color:white;" do %><i class="fas fa-pencil-alt"></i><% end %></td>
+            <% else %>
+              <td><%= link_to edit_pttrain_path(train.id), style:"color:white;" do %><i class="fas fa-pencil-alt"></i><% end %></td>
+            <% end %>
+
+            <% if train.type == "Treino de grupo" %>
+                <td><%= link_to grouptrain_path(train.id), style:"color:white;", method: :delete, data: { confirm: 'Apagar este treino?' } do %><i class="fas fa-trash-alt"></i><% end %></td>
+            <% else %>
+                <td><%= link_to pttrain_path(train.id), style:"color:white;", method: :delete, data: { confirm: 'Apagar este treino?' } do %><i class="fas fa-trash-alt"></i><% end %></td>
+            <% end %>
+
+        <td><%= train.dog.name %></td>
+        <td><%= train.dog.owner.name %></td>
+        <td><%= train.type %></td>
+        <td><%= train.inscr_date %></td>
+        <td><%= train.status %></td>
+        <td class="ellipsis"><%= train.obs %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Grouptrain', new_grouptrain_path %>

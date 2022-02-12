@@ -39,7 +39,7 @@ class PttrainsController < ApplicationController
   def update
     respond_to do |format|
       if @pttrain.update(pttrain_params)
-        format.html { redirect_to dog_url(@pttrain.dog_id) }
+        format.html { redirect_to grouptrains_url }
         format.json { render :show, status: :ok, location: @pttrain }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class PttrainsController < ApplicationController
   def destroy
     @pttrain.destroy
     respond_to do |format|
-      format.html { redirect_to dog_url(@pttrain.dog_id) }
+      format.html { grouptrains_url }
       format.json { head :no_content }
     end
   end

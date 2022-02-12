@@ -2,8 +2,8 @@ class Dog < ApplicationRecord
 
 belongs_to :owner
 has_one_attached :picture
-has_many :grouptrains
-has_many :pttrains
+has_many :grouptrains, dependent: :delete_all
+has_many :pttrains, dependent: :delete_all
 
 GENDER =
 [
