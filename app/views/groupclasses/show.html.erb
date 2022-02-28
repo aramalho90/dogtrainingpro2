@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Grouptrain:</strong>
+  <%= @groupclass.grouptrain_id %>
+</p>
+
+<p>
+  <strong>Class date:</strong>
+  <%= @groupclass.class_date %>
+</p>
+
+<%= link_to 'Edit', edit_groupclass_path(@groupclass) %> |
+<%= link_to 'Back', groupclasses_path %>

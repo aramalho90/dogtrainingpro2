@@ -1,0 +1,62 @@
+
+<div class="jumbotron">
+
+ <%= simple_form_for @groupclass, :html => {:class => "form-horizontal center"} do |f| %>
+   <%= f.error_notification %>
+   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+       <div class="form-row" style="padding-left: 15px" data-turbolinks="false">
+         <div class="form-group col-md-2">
+           <label>Data</label><br>
+           <%= f.text_field :class_date, type: 'date', class: "form-control" , readonly: true, value: @date_of_class.to_date %>
+        </div>
+       </div>
+
+       <br>
+
+       <div class="form-row" style="padding-left: 15px" data-turbolinks="false">
+         <div class="form-group col-md-2" data-turbolinks="false">
+           <label>Nome do cão</label><br>
+           <%= f.text_field :dog_name, data: {autocomplete_source: Dog.order(:name).map(&:name)} %>
+         </div>
+       </div>
+
+       <br>
+
+       <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-8">
+           <%= f.input :obs, label:'Observações', class: "form-control" %>
+         </div>
+       </div>
+
+    <div style="margin: 15px">
+        <%= f.button :submit, value: 'Submeter', :class=> "btn btn-primary font-weight-bold", :style=> "margin-left:5px;color:white;" %>
+        <%= link_to 'Retornar', url_for(:back), class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
+    </div>
+
+    <table class="table table-striped table-dark table-hover">
+      <thead>
+        <tr>
+            <th colspan="1"></th>
+            <th>Nome do cão</th>
+            <th>Nome do dono</th>
+            <th>Observações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @groupclasses.each do |g| %>
+          <tr>
+            <td><%= link_to groupclass_path(g.id), style:"color:white;", method: :delete, data: { confirm: 'Apagar a presença?' } do %><i class="fas fa-trash-alt"></i><% end %></td>
+            <td><%= g.dog.name %></td>
+            <td><%= g.dog.owner.name %></td>
+            <td class="ellipsis"><%= g.obs %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+ </div>
+
+ <% end %>

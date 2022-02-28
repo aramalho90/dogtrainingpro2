@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Groupclasses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Grouptrain</th>
+      <th>Class date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groupclasses.each do |groupclass| %>
+      <tr>
+        <td><%= groupclass.grouptrain_id %></td>
+        <td><%= groupclass.class_date %></td>
+        <td><%= link_to 'Show', groupclass %></td>
+        <td><%= link_to 'Edit', edit_groupclass_path(groupclass) %></td>
+        <td><%= link_to 'Destroy', groupclass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Groupclass', new_groupclass_path %>
