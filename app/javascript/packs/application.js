@@ -21,6 +21,7 @@ document.addEventListener("turbolinks:load", function() {
   $(function(){
 
       $('#dog_owner_name').autocomplete( { source: $('#dog_owner_name').data('autocomplete-source') } );
+      $('#groupclass_dog_name').autocomplete( { source: $('#groupclass_dog_name').data('autocomplete-source') } );
 
   })
 })

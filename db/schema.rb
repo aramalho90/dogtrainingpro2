@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_05_124216) do
+ActiveRecord::Schema.define(version: 2022_02_22_181253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 2022_02_05_124216) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "add_test5to_pttrains", force: :cascade do |t|
+    t.date "test5"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "dogs", force: :cascade do |t|
     t.string "name"
     t.string "sex"
@@ -58,6 +64,13 @@ ActiveRecord::Schema.define(version: 2022_02_05_124216) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "owner_id"
+  end
+
+  create_table "groupclasses", force: :cascade do |t|
+    t.decimal "grouptrain_id"
+    t.date "class_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "groupmaps", force: :cascade do |t|
@@ -76,6 +89,7 @@ ActiveRecord::Schema.define(version: 2022_02_05_124216) do
     t.string "obs"
     t.bigint "dog_id"
     t.bigint "groupmap_id"
+    t.date "inscr_date"
   end
 
   create_table "owners", force: :cascade do |t|
@@ -107,6 +121,10 @@ ActiveRecord::Schema.define(version: 2022_02_05_124216) do
     t.string "obs"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "dog_id"
+    t.bigint "ptmap_id"
+    t.date "test5"
+    t.date "inscr_date"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

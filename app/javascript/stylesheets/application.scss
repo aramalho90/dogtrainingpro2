@@ -1,4 +1,7 @@
 @import 'flatpickr/dist/flatpickr.css';
+body{
+background-color:#e9ecef
+}
 
 img{
     max-width:360px;
@@ -6,8 +9,9 @@ img{
 }
 
 div.jumbotron{
-    word-spacing: -10px;
+    height: 100%
 }
+
 
 input.form-control{
     font-family: arial;

@@ -5,6 +5,9 @@ has_one_attached :picture
 has_many :grouptrains, dependent: :delete_all
 has_many :pttrains, dependent: :delete_all
 
+  validates_length_of :grouptrains, maximum: 1
+  validates_length_of :pttrains, maximum: 1
+
 GENDER =
 [
 ['Macho', 'M'],
