@@ -1,39 +1,76 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron">
 
-<p>
-  <strong>Test1:</strong>
-  <%= @pttrain.test1 %>
-</p>
+ <%= simple_form_for @pttrain, :html => {:class => "form-horizontal center"} do |f| %>
+   <%= f.error_notification %>
+   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<p>
-  <strong>Test2:</strong>
-  <%= @pttrain.test2 %>
-</p>
+       <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-2">
+           <label style="float:left">Dia</label><br>
+           <%= f.collection_select(:ptmap_id,Ptmap.order('id ASC'), :id, :formatted_name, { prompt: 'Seleccione um dia'}, { class: "form-control", :disabled => true}) %>
+         </div>
+       </div>
 
-<p>
-  <strong>Test3:</strong>
-  <%= @pttrain.test3 %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Primeira passagem de testemunho</label><br>
+          <%= f.text_field :test1, type: 'date', class: "form-control" , include_blank: true, readonly: true %>
+        </div>
+      </div>
 
-<p>
-  <strong>Test4:</strong>
-  <%= @pttrain.test4 %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Segunda passagem de testemunho</label><br>
+          <%= f.text_field :test2,type: 'date', class: "form-control", include_blank: true, readonly: true %>
+        </div>
+      </div>
 
-<p>
-  <strong>Inscr paid:</strong>
-  <%= @pttrain.inscr_paid %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Terceira passagem de testemunho</label><br>
+          <%= f.text_field :test3, type: 'date', class: "form-control" , include_blank: true, readonly: true %>
+        </div>
+      </div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @pttrain.status %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Quarta passagem de testemunho</label><br>
+          <%= f.text_field :test4,type: 'date', class: "form-control", include_blank: true, readonly: true %>
+        </div>
+      </div>
 
-<p>
-  <strong>Obs:</strong>
-  <%= @pttrain.obs %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Quinta passagem de testemunho</label><br>
+          <%= f.text_field :test5,type: 'date', class: "form-control", include_blank: true, readonly: true %>
+        </div>
+      </div>
 
-<%= link_to 'Edit', edit_pttrain_path(@pttrain) %> |
-<%= link_to 'Back', pttrains_path %>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Data de inscrição</label><br>
+          <%= f.text_field :inscr_date, type: 'date', class: "form-control", include_blank: true, readonly: true %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+       <%= f.input :inscr_paid,label:'Inscrição paga', class: "form-control", disabled: true %>
+      </div>
+    <br>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-2">
+          <label style="float:left">Estado</label><br>
+            <%=f.input :status, as: :select, collection: Pttrain::STATUS, label: false, disabled: true %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-8">
+          <%= f.input :obs, label:'Observações', class: "form-control", readonly: true %>
+        </div>
+      </div>
+
+   </div>
+
+ <% end %>

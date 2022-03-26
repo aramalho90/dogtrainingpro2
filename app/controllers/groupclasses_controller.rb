@@ -3,7 +3,21 @@ class GroupclassesController < ApplicationController
 
   # GET /groupclasses or /groupclasses.json
   def index
-    @groupclasses = Groupclass.all
+    groupclasses = Groupclass.select(:id, "'Treino de grupo' as type", :class_date, :obs, :dog_id)
+    ptclasses = Ptclass.select(:id, "'Treino PT' as type", :class_date, :obs, :dog_id)
+
+    union = Groupclass.connection.unprepared_statement do
+        "((#{groupclasses.to_sql}) UNION (#{ptclasses.to_sql})) AS groupclasses"
+    end
+
+    @q = Groupclass
+           .select('*')
+           .from(union)
+           .order('class_date')
+           .ransack(params[:q])
+
+    @classes = @q.result().paginate(page: params[:page], per_page: 10)
+
   end
 
   def home
@@ -44,7 +58,7 @@ class GroupclassesController < ApplicationController
   def update
     respond_to do |format|
       if @groupclass.update(groupclass_params)
-        format.html { redirect_to groupclass_url(@groupclass), notice: "Groupclass was successfully updated." }
+        format.html { redirect_back fallback_location: root_path }
         format.json { render :show, status: :ok, location: @groupclass }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,7 +72,7 @@ class GroupclassesController < ApplicationController
     @groupclass.destroy
 
     respond_to do |format|
-      format.html { redirect_to groupclasses_url, notice: "Groupclass was successfully destroyed." }
+      format.html { redirect_back fallback_location: root_path }
       format.json { head :no_content }
     end
   end

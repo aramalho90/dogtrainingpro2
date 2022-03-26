@@ -1,0 +1,13 @@
+<div class="jumbotron">
+
+  <div class="form-group col-md-4">
+
+    <%= form_tag(new_ptclass_path, :method => "get") do %>
+        <%= label_tag(:q, "Data:") %> <br>
+        <%= date_field_tag(:q) %> <br><br>
+        <%= submit_tag("Submeter") %>
+    <% end %>
+
+  </div>
+
+</div>

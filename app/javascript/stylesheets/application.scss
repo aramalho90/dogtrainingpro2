@@ -3,6 +3,18 @@ body{
 background-color:#e9ecef
 }
 
+label{
+    padding-left: 20px;
+    font-weight: bolder;
+    padding-right: 5px;
+}
+
+a:visited {
+  color: aqua;
+  text-decoration: underline;
+  font-weight: bold
+}
+
 img{
     max-width:360px;
     max-height:360px;
@@ -26,7 +38,7 @@ td.ellipsis{
 }
 
 .digg_pagination {
-  background: white;
+  background: #e9ecef;
   cursor: default;
   /* self-clearing method: */ }
   .digg_pagination a, .digg_pagination span, .digg_pagination em {

@@ -1,9 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <%= search_form_for @q do |f| %>
-  <%= f.search_field :dog_name_cont, placeholder: 'Nome do cão' %>
-  <%= f.search_field :dog_owner_name_cont, placeholder: 'Nome do cão' %>
-  <%= f.search_field :status_cont, placeholder: 'Estado' %>
+  <%= f.label :dog_name_cont, 'Nome do cão' %>
+  <%= f.search_field :dog_name_cont %>
+  <%= f.label :dog_name_cont, 'Nome do dono' %>
+  <%= f.search_field :dog_owner_name_cont %>
+  <%= f.label :inscr_date_eq, 'Data de inscrição' %>
+  <%= f.date_field :inscr_date_eq, placeholder: 'Data de inscrição' %>
+  <%= f.label :status_cont, 'Estado' %>
+  <%= f.select :status_cont, [['Em lista de espera', 'Em lista de espera'], ['A realizar aulas teóricas', 'A realizar aulas teóricas'],
+                                          ['A decorrer', 'A decorrer'],
+                                          ['Terminado', 'Terminado']],{include_blank: ''}
+                                         %>
   <%= f.submit %>
 <% end %>
 <br>
@@ -41,7 +49,7 @@
                 <td><%= link_to pttrain_path(train.id), style:"color:white;", method: :delete, data: { confirm: 'Apagar este treino?' } do %><i class="fas fa-trash-alt"></i><% end %></td>
             <% end %>
 
-        <td><%= train.dog.name %></td>
+        <td><%= link_to dog_path(train.dog) do %> <%= train.dog.name %><% end %></td>
         <td><%= train.dog.owner.name %></td>
         <td><%= train.type %></td>
         <td><%= train.inscr_date %></td>
@@ -52,4 +60,6 @@
   </tbody>
 </table>
 <br>
-
+<div class="digg_pagination">
+    <%= will_paginate @trains, :container => false %>
+</div>

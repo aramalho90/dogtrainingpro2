@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dog:</strong>
+  <%= @ptclass.dog_id %>
+</p>
+
+<p>
+  <strong>Class date:</strong>
+  <%= @ptclass.class_date %>
+</p>
+
+<p>
+  <strong>Obs:</strong>
+  <%= @ptclass.obs %>
+</p>
+
+<%= link_to 'Edit', edit_ptclass_path(@ptclass) %> |
+<%= link_to 'Back', ptclasses_path %>

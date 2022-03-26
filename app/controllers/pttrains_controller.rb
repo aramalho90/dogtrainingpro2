@@ -65,6 +65,6 @@ class PttrainsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pttrain_params
-      params.require(:pttrain).permit(:test1, :test2, :test3, :test4, :inscr_paid, :status, :obs, :ptmap_id, :dog_id)
+      params.require(:pttrain).permit(:test1, :test2, :test3, :test4, :inscr_paid, :status, :obs, :ptmap_id, :dog_id, :inscr_date)
     end
 end

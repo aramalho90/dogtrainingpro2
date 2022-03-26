@@ -1,29 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Groupclasses</h1>
-
-<table>
+<%= search_form_for @q do |f| %>
+  <%= f.label :dog_name_cont, 'Nome do cão' %>
+  <%= f.search_field :dog_name_cont %>
+  <%= f.label :dog_name_cont, 'Nome do dono' %>
+  <%= f.search_field :dog_owner_name_cont, placeholder: 'Nome do dono' %>
+  <%= f.label :class_date_eq, 'Data de inscrição' %>
+  <%= f.date_field :class_date_eq, placeholder: 'Data' %>
+  <%= f.submit %>
+<% end %>
+<br>
+<table class="table table-striped table-dark table-hover">
   <thead>
     <tr>
-      <th>Grouptrain</th>
-      <th>Class date</th>
-      <th colspan="3"></th>
+      <th colspan="1"></th>
+      <th>Nome do cão</th>
+      <th>Nome do dono</th>
+      <th>Tipe de treino</th>
+      <th>Data</th>
+      <th>Observaçóes</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @groupclasses.each do |groupclass| %>
+    <% @classes.each do |cl| %>
       <tr>
-        <td><%= groupclass.grouptrain_id %></td>
-        <td><%= groupclass.class_date %></td>
-        <td><%= link_to 'Show', groupclass %></td>
-        <td><%= link_to 'Edit', edit_groupclass_path(groupclass) %></td>
-        <td><%= link_to 'Destroy', groupclass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if cl.type == "Treino de grupo" %>
+                <td><%= link_to groupclass_path(cl.id), style:"color:white;", method: :delete, data: { confirm: 'Apagar presença?' } do %><i class="fas fa-trash-alt"></i><% end %></td>
+            <% else %>
+                <td><%= link_to ptclass_path(cl.id), style:"color:white;", method: :delete, data: { confirm: 'Apagar presença?' } do %><i class="fas fa-trash-alt"></i><% end %></td>
+            <% end %>
+
+        <td><%= cl.dog.name %></td>
+        <td><%= cl.dog.owner.name %></td>
+        <td><%= cl.type %></td>
+        <td><%= cl.class_date %></td>
+        <td class="ellipsis"><%= cl.obs %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Groupclass', new_groupclass_path %>
+<div class="digg_pagination">
+    <%= will_paginate @classes, :container => false %>
+</div>

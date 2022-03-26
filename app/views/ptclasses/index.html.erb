@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ptclasses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dog</th>
+      <th>Class date</th>
+      <th>Obs</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ptclasses.each do |ptclass| %>
+      <tr>
+        <td><%= ptclass.dog_id %></td>
+        <td><%= ptclass.class_date %></td>
+        <td><%= ptclass.obs %></td>
+        <td><%= link_to 'Show', ptclass %></td>
+        <td><%= link_to 'Edit', edit_ptclass_path(ptclass) %></td>
+        <td><%= link_to 'Destroy', ptclass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ptclass', new_ptclass_path %>

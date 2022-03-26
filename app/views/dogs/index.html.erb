@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <%= search_form_for @q do |f| %>
-  <%= f.search_field :name_cont, placeholder: 'Nome' %>
-  <%= f.search_field :owner_name_cont, placeholder: 'Nome do dono' %>
-  <%= f.search_field :breed_cont, placeholder: 'Raça' %>
+  <%= f.label :dog_name_cont, 'Nome do cão' %>
+  <%= f.search_field :name_cont %>
+  <%= f.label :owner_name_cont, 'Nome do dono' %>
+  <%= f.search_field :owner_name_cont %>
+  <%= f.label :breed_cont, 'Raça' %>
+  <%= f.search_field :breed_cont %>
   <%= f.submit %>
 <% end %>
 <br>

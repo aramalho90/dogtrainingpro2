@@ -78,6 +78,6 @@ class GrouptrainsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def grouptrain_params
-      params.require(:grouptrain).permit(:teoric1, :teoric2, :inscr_paid, :teoric_paid, :status, :groupmap_id, :obs, :dog_id)
+      params.require(:grouptrain).permit(:teoric1, :teoric2, :inscr_paid, :teoric_paid, :status, :groupmap_id, :obs, :dog_id, :inscr_date)
     end
 end

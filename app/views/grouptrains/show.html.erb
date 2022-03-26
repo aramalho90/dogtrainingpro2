@@ -1,29 +1,60 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron">
 
-<p>
-  <strong>Teoric1:</strong>
-  <%= @grouptrain.teoric1 %>
-</p>
+ <%= simple_form_for @grouptrain, :html => {:class => "form-horizontal center"} do |f| %>
+   <%= f.error_notification %>
+   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<p>
-  <strong>Teoric2:</strong>
-  <%= @grouptrain.teoric2 %>
-</p>
+       <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-2">
+           <label style="float:left">Horário</label><br>
+           <%= f.collection_select(:groupmap_id, Groupmap.order('id ASC'), :id, :formatted_name, { prompt: 'Seleccione um horário'}, { class: "form-control", disabled: true}) %>
+         </div>
+       </div>
 
-<p>
-  <strong>Inscr paid:</strong>
-  <%= @grouptrain.inscr_paid %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Primeira aula teórica</label><br>
+          <%= f.text_field :teoric1, type: 'date', class: "form-control" , include_blank: true, readonly: true %>
+        </div>
+      </div>
 
-<p>
-  <strong>Teoric paid:</strong>
-  <%= @grouptrain.teoric_paid %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Segunda aula teórica</label><br>
+          <%= f.text_field :teoric2,type: 'date', class: "form-control", include_blank: true, readonly: true %>
+        </div>
+      </div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @grouptrain.status %>
-</p>
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Data de inscrição</label><br>
+          <%= f.text_field :inscr_date, type: 'date', class: "form-control", include_blank: true, readonly: true %>
+        </div>
+      </div>
 
-<%= link_to 'Edit', edit_grouptrain_path(@grouptrain) %> |
-<%= link_to 'Back', grouptrains_path %>
+    <br>
+
+      <div class="form-row" style="padding-left: 15px">
+       <%= f.input :inscr_paid,label:'Inscrição paga', class: "form-control", disabled: true %>
+      </div>
+      <div class="form-row" style="padding-left: 15px">
+       <%= f.input :teoric_paid,label:'Aulas Teóricas pagas', class: "form-control", disabled: true %>
+      </div>
+    <br>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-2">
+          <label style="float:left">Estado</label><br>
+            <%=f.input :status, as: :select, collection: Grouptrain::STATUS, label: false, disabled: true %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-8">
+          <%= f.input :obs, label:'Observações', class: "form-control", readonly: true %>
+        </div>
+      </div>
+
+   </div>
+
+ <% end %>

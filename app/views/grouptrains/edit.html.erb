@@ -1,6 +1,63 @@
-<h1>Editing Grouptrain</h1>
+<div class="jumbotron">
 
-<%= render 'form', grouptrain: @grouptrain %>
+ <%= simple_form_for @grouptrain, :html => {:class => "form-horizontal center"} do |f| %>
+   <%= f.error_notification %>
+   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= link_to 'Show', @grouptrain %> |
-<%= link_to 'Back', grouptrains_path %>
+       <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-2">
+           <label style="float:left">Horário</label><br>
+           <%= f.collection_select(:groupmap_id, Groupmap.order('id ASC'), :id, :formatted_name, { prompt: 'Seleccione um horário'}, { class: "form-control", disabled: true}) %>
+         </div>
+       </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Primeira aula teórica</label><br>
+          <%= f.text_field :teoric1, type: 'date', class: "form-control" , include_blank: true %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Segunda aula teórica</label><br>
+          <%= f.text_field :teoric2,type: 'date', class: "form-control", include_blank: true %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-4">
+          <label>Data de inscrição</label><br>
+          <%= f.text_field :inscr_date, type: 'date', class: "form-control", include_blank: true %>
+        </div>
+      </div>
+
+    <br>
+
+      <div class="form-row" style="padding-left: 15px">
+       <%= f.input :inscr_paid,label:'Inscrição paga', class: "form-control" %>
+      </div>
+      <div class="form-row" style="padding-left: 15px">
+       <%= f.input :teoric_paid,label:'Aulas Teóricas pagas', class: "form-control" %>
+      </div>
+    <br>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-2">
+          <label style="float:left">Estado</label><br>
+            <%=f.input :status, as: :select, collection: Grouptrain::STATUS, label: false %>
+        </div>
+      </div>
+
+      <div class="form-row" style="padding-left: 15px">
+        <div class="form-group col-md-8">
+          <%= f.input :obs, label:'Observações', class: "form-control" %>
+        </div>
+      </div>
+    <div style="margin: 15px">
+        <%= f.button :submit, value: 'Submeter', :class=> "btn btn-primary font-weight-bold", :style=> "margin-left:5px;color:white;" %>
+        <%= link_to 'Retornar', url_for(:back), class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
+    </div>
+   </div>
+
+ <% end %>
