@@ -50,7 +50,7 @@
             <% end %>
 
         <td><%= link_to dog_path(train.dog) do %> <%= train.dog.name %><% end %></td>
-        <td><%= train.dog.owner.name %></td>
+        <td><%= link_to owner_path(train.dog.owner) do %> <%= train.dog.owner.name %><% end %></td>
         <td><%= train.type %></td>
         <td><%= train.inscr_date %></td>
         <td><%= train.status %></td>

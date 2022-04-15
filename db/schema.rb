@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_26_104602) do
+ActiveRecord::Schema.define(version: 2022_04_15_093618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,14 @@ ActiveRecord::Schema.define(version: 2022_03_26_104602) do
     t.integer "nif"
     t.string "email"
     t.string "referral"
+    t.string "obs"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.date "date"
+    t.date "payment_date"
     t.string "obs"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

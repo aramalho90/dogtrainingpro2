@@ -18,7 +18,7 @@
       <th>Sexo</th>
       <th><%= sort_link(@q, :breed, 'Raça') %></th>
       <th>Cor</th>
-      <th><%= sort_link(@q, :ownername, 'Nome do dono') %></th>
+      <th><%= sort_link(@q, :owner_name, 'Nome do dono') %></th>
       <th>Contacto</th>
       <th>Observações</th>
     </tr>
@@ -30,13 +30,13 @@
         <td><%= link_to dog, style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
         <td><%= link_to edit_dog_path(dog), style:"color:white;" do %><i class="fas fa-pencil-alt"></i><% end %></td>
         <td><%= link_to dog, style:"color:white;", method: :delete, data: { confirm: 'Apagar este cão? Todos os treinos serão apagados.' } do %><i class="fas fa-trash-alt"></i><% end %></td>
-        <td><%= dog.name %></td>
+        <td><%= link_to dog do %><%= dog.name %><% end %></td>
         <td><%= dog.sex %></td>
         <td><%= dog.breed %></td>
         <td><%= dog.color %></td>
-        <td><%= dog.owner.name %></td>
+        <td><%= link_to owner_path(dog.owner) do %><%= dog.owner.name %><% end %></td>
         <td><%= dog.owner.contact %></td>
-        <td><%= dog.obs %></td>
+        <td class="ellipsis"><%= dog.obs %></td>
       </tr>
     <% end %>
   </tbody>

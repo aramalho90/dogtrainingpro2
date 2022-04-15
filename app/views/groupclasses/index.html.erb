@@ -31,8 +31,8 @@
                 <td><%= link_to ptclass_path(cl.id), style:"color:white;", method: :delete, data: { confirm: 'Apagar presença?' } do %><i class="fas fa-trash-alt"></i><% end %></td>
             <% end %>
 
-        <td><%= cl.dog.name %></td>
-        <td><%= cl.dog.owner.name %></td>
+        <td><%= link_to dog_path(cl.dog) do %><%= cl.dog.name %><% end %></td>
+        <td><%= link_to owner_path(cl.dog.owner) do %><%= cl.dog.owner.name %><% end %></td>
         <td><%= cl.type %></td>
         <td><%= cl.class_date %></td>
         <td class="ellipsis"><%= cl.obs %></td>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :dog_name, 'Nome do cão' %>
+  <%= f.search_field :dog_name %>
+  <%= f.label :dog_owner_name, 'Nome do dono' %>
+  <%= f.search_field :dog_owner_name %>
+  <%= f.submit %>
+<% end %>
+<br>
+<table class="table table-striped table-dark table-hover">
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+      <th><%= sort_link(@q, :dog_name, 'Nome') %></th>
+      <th><%= sort_link(@q, :dog_owner_name, 'Nome do dono') %></th>
+      <th>Contacto</th>
+      <th>Data</th>
+      <th>Data de pagamento</th>
+      <th>Observações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payments.each do |p| %>
+      <tr>
+        <td><%= link_to payment_path(p), style:"color:white;" do %><i class="far fa-eye"></i><% end %></td>
+        <td><%= link_to edit_payment_path(p), style:"color:white;" do %><i class="fas fa-pencil-alt"></i><% end %></td>
+        <td><%= link_to payment_path(p), style:"color:white;", method: :delete, data: { confirm: 'Apagar esta entrada?' } do %><i class="fas fa-trash-alt"></i><% end %></td>
+        <td><%= link_to dog_path(p.dog) do %><%= p.dog.name %><% end %></td>
+        <td><%= link_to owner_path(p.dog.owner) do %><%= p.dog.owner.name %><% end %></td>
+        <td><%= p.dog.owner.contact %></td>
+        <td><%= p.date %></td>
+        <td><%= p.payment_date %></td>
+        <td class="ellipsis"><%= p.obs %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<div class="digg_pagination">
+    <%= will_paginate @payments, :container => false %>
+</div>
+<br>
+<%= link_to 'Adicionar pagamento', new_payment_path, class: "btn btn-primary font-weight-bold", style: "margin-left:5px;color:white;" %>

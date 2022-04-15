@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2022-04-15
+  payment_date: 2022-04-15
+  obs: MyString
+
+two:
+  date: 2022-04-15
+  payment_date: 2022-04-15
+  obs: MyString

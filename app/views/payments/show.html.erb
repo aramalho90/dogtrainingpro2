@@ -1,0 +1,44 @@
+
+<div class="jumbotron">
+
+ <%= simple_form_for @payment, :html => {:class => "form-horizontal center"} do |f| %>
+   <%= f.error_notification %>
+   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+       <div class="form-row" style="padding-left: 15px" data-turbolinks="false">
+         <div class="form-group col-md-2" data-turbolinks="false">
+           <label>Nome do cão</label><br>
+           <%= f.text_field :dog_name, data: {autocomplete_source: Dog.order(:name).map(&:name)}, class: "form-control", disabled: true %>
+         </div>
+       </div>
+
+       <br>
+
+       <div class="form-row" style="padding-left: 15px" data-turbolinks="false">
+         <div class="form-group col-md-2">
+           <label>Data</label><br>
+          <%= f.text_field :date, type: 'date', class: "form-control", include_blank: true, readonly: true %>
+           </div>
+       </div>
+
+       <br>
+
+        <div class="form-row" style="padding-left: 15px" data-turbolinks="false">
+          <div class="form-group col-md-2">
+            <label>Data de pagamento</label><br>
+          <%= f.text_field :payment_date, type: 'date', class: "form-control", include_blank: true, readonly: true %>
+         </div>
+        </div>
+
+        <br>
+
+       <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-8">
+           <%= f.input :obs, label:'Observações', class: "form-control", disabled: true %>
+         </div>
+       </div>
+
+
+ </div>
+
+ <% end %>
