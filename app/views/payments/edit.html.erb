@@ -1,6 +1,49 @@
-<h1>Editing Payment</h1>
 
-<%= render 'form', payment: @payment %>
+<div class="jumbotron">
 
-<%= link_to 'Show', @payment %> |
-<%= link_to 'Back', payments_path %>
+ <%= simple_form_for @payment, :html => {:class => "form-horizontal center"} do |f| %>
+   <%= f.error_notification %>
+   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+       <div class="form-row" style="padding-left: 15px" data-turbolinks="false">
+         <div class="form-group col-md-2" data-turbolinks="false">
+           <label>Nome do cão</label><br>
+           <%= f.text_field :dog_name, data: {autocomplete_source: Dog.order(:name).map(&:name)}, class: "form-control" %>
+         </div>
+       </div>
+
+       <br>
+
+       <div class="form-row" style="padding-left: 15px" data-turbolinks="false">
+         <div class="form-group col-md-2">
+           <label>Data</label><br>
+               <%= f.date_select :date,  { order: [ :month, :year], :discard_day => true}, { class: "form-control" } %>
+           </div>
+       </div>
+
+       <br>
+
+        <div class="form-row" style="padding-left: 15px" data-turbolinks="false">
+          <div class="form-group col-md-2">
+            <label>Data de pagamento</label><br>
+            <%= f.text_field :payment_date, type: 'date', class: "form-control" , include_blank: true %>
+         </div>
+        </div>
+
+        <br>
+
+       <div class="form-row" style="padding-left: 15px">
+         <div class="form-group col-md-8">
+           <%= f.input :obs, label:'Observações', class: "form-control" %>
+         </div>
+       </div>
+
+    <div style="margin: 15px">
+        <%= f.button :submit, value: 'Submeter', :class=> "btn btn-primary font-weight-bold", :style=> "margin-left:5px;color:white;" %>
+        <%= link_to 'Retornar', url_for(:back), class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
+    </div>
+
+
+ </div>
+
+ <% end %>

@@ -17,7 +17,7 @@
        <div class="form-row" style="padding-left: 15px" data-turbolinks="false">
          <div class="form-group col-md-2" data-turbolinks="false">
            <label>Nome do cão</label><br>
-           <%= f.text_field :dog_name, data: {autocomplete_source: Dog.order(:name).map(&:name)} %>
+           <%= f.text_field :dog_name, data: {autocomplete_source: Dog.order(:name).map(&:name)}, class: "form-control" %>
          </div>
        </div>
 

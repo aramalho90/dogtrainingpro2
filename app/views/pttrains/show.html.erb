@@ -70,7 +70,10 @@
           <%= f.input :obs, label:'Observações', class: "form-control", readonly: true %>
         </div>
       </div>
-
+    <div style="margin: 15px">
+        <%= link_to 'Editar', edit_pttrain_path(@pttrain), class: "btn btn-warning font-weight-bold ", style: "margin-left:5px;color:black;" %>
+        <%= link_to 'Retornar', grouptrains_path, class: "btn btn-secondary font-weight-bold ", style: "margin-left:5px;color:white;" %>
+    </div>
    </div>
 
  <% end %>

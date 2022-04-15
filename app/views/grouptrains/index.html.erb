@@ -19,10 +19,10 @@
   <thead>
     <tr>
       <th colspan="3"></th>
-      <th>Nome do cão</th>
-      <th>Nome do dono</th>
+      <th><%= sort_link(@q, :dog_name, 'Nome do cão') %></th>
+      <th><%= sort_link(@q, :dog_owner_name, 'Nome do dono') %></th>
       <th>Tipe de treino</th>
-      <th>Data de inscriçáo</th>
+      <th><%= sort_link(@q, :inscr_date, 'Data de inscriçáo') %></th>
       <th>Estado</th>
       <th>Observaçóes</th>
     </tr>
