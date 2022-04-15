@@ -1,0 +1,104 @@
+    <div class="w-25 p-3 float-right">
+        <h4 class="display-5 text-center" style: "text-align: center">Vagas Grupo</h4>
+        <table class="table table-striped table-dark table-hover table-sm mb-10">
+        <thead>
+            <tr>
+                <th>Hora</th>
+                <th>Em treino</th>
+                <th>Limite</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @vacanciesG.each do |v| %>
+                <tr>
+                    <td><%= v.time %></td>
+                    <% if v.count < v.limit %>
+                    <td class="green"><%= v.count %></td>
+                    <% elsif v.count == v.limit %>
+                    <td class="yellow"><%= v.count %></td>
+                    <% else %>
+                    <td class="red"><%= v.count %></td>
+                    <% end %>
+                    <td><%= number_with_precision(v.limit).to_i  %></td>
+                </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+
+    <div class="w-25 p-3 float-right">
+        <h4 class="display-5 text-center" style: "text-align: center">Vagas PT</h4>
+        <table class="table table-striped table-dark table-hover table-sm mb-10">
+        <thead>
+            <tr>
+                <th>Dia</th>
+                <th>Em treino</th>
+                <th>Limite</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @vacanciesP.each do |v| %>
+                <tr>
+                    <td><%= v.day %></td>
+                    <% if v.count < v.limit %>
+                    <td class="green"><%= v.count %></td>
+                    <% elsif v.count == v.limit %>
+                    <td class="yellow"><%= v.count %></td>
+                    <% else %>
+                    <td class="red"><%= v.count %></td>
+                    <% end %>
+                    <td><%= number_with_precision(v.limit).to_i  %></td>
+                </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+
+        <div class="w-50 p-3 float-left">
+            <h4 class="display-5 text-center " style: "text-align: center">Pagamentos em falta</h4>
+            <table class="table table-striped table-dark table-hover table-sm ">
+            <thead>
+                <tr>
+                    <th colspan="1"></th>
+                    <th>Nome</th>
+                    <th>Data de início</th>
+                    <th>Data de fim</th>
+                    <th>Preço</th>
+                    <th>Nº de noites</th>
+                    <th>Total</th>
+                    <th>Nome do dono</th>
+                    <th>Contacto</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+<div class=" w-100 d-block float-left" >
+    <div class="w-50 p-3 mt-20 float-left">
+        <h4 class="display-5 text-center" style: "text-align: center">Estadias por pagar</h4>
+        <table class="table table-striped table-dark table-hover table-sm w-100">
+        <thead>
+            <tr>
+                <th colspan="1"></th>
+                <th>Nome</th>
+                <th>Data de início</th>
+                <th>Data de fim</th>
+                <th>Preço</th>
+                <th>Nº de noites</th>
+                <th>Total</th>
+                <th>Nome do dono</th>
+                <th>Contacto</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+        </table>
+    </div>
