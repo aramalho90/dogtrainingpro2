@@ -4,7 +4,7 @@ class PaymentsController < ApplicationController
   # GET /payments or /payments.json
   def index
     @q = Payment.order("date DESC").ransack(params[:q])
-    @payments = @q.result().paginate(page: params[:page], per_page: 10)  end
+    @payments = @q.result().paginate(page: params[:page], per_page: 12)  end
 
   # GET /payments/1 or /payments/1.json
   def show

@@ -41,7 +41,7 @@ class HomeController < ApplicationController
         where status in ('A realizar passagens','A decorrer','A realizar aulas teóricas') and inscr_date is not null
         group by o.id,o.name, o.contact,d.id, d.name,tr.status,extract(month from age(cast(date_trunc('month', current_date) as date), cast(date_trunc('month',inscr_date) as date)))
         having count(1) filter (where pay.date is not null) < extract(month from age(cast(date_trunc('month', current_date) as date), cast(date_trunc('month',inscr_date) as date)))
-        ", :page => params[:missing_page], :per_page => 15)
+        ", :page => params[:missing_page], :per_page => 10)
 
         @waiting = Owner.paginate_by_sql(
         "select o.id as owner_id,o.name, o.contact,d.id as dog_id, d.name as dog_name,tr.train

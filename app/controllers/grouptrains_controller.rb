@@ -15,7 +15,7 @@ class GrouptrainsController < ApplicationController
            .from(union)
            .ransack(params[:q])
 
-    @trains = @q.result().paginate(page: params[:page], per_page: 10)
+    @trains = @q.result().paginate(page: params[:page], per_page: 12)
 
   end
 

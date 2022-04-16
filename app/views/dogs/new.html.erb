@@ -16,7 +16,7 @@
        <div class="form-row" style="padding-left: 15px" data-turbolinks="false">
          <div class="form-group col-md-2" data-turbolinks="false">
            <label style="float:left">Dono</label><br>
-           <%= f.text_field :owner_name, data: {autocomplete_source: Owner.order(:name).map(&:name)} %>
+           <%= f.text_field :owner_name, data: {autocomplete_source: Owner.order(:name).map(&:name)}, class: "form-control" %>
          </div>
        </div>
       <div class="form-row" style="padding-left: 15px">
