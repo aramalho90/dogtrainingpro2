@@ -52,7 +52,7 @@ class GrouptrainsController < ApplicationController
   def update
     respond_to do |format|
       if @grouptrain.update(grouptrain_params)
-        format.html { redirect_to dog_url(@grouptrain.dog_id)}
+        format.html { redirect_to grouptrains_url}
         format.json { render :show, status: :ok, location: @grouptrain }
       else
         format.html { render :edit, status: :unprocessable_entity }

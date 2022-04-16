@@ -57,48 +57,62 @@
     </div>
 
         <div class="w-50 p-3 float-left">
-            <h4 class="display-5 text-center " style: "text-align: center">Pagamentos em falta</h4>
+            <h4 class="display-5 text-center " style: "text-align: center">Lista de espera</h4>
             <table class="table table-striped table-dark table-hover table-sm ">
             <thead>
                 <tr>
-                    <th colspan="1"></th>
-                    <th>Nome</th>
-                    <th>Data de início</th>
-                    <th>Data de fim</th>
-                    <th>Preço</th>
-                    <th>Nº de noites</th>
-                    <th>Total</th>
-                    <th>Nome do dono</th>
-                    <th>Contacto</th>
+                <th>Nome do dono</th>
+                <th>Contacto</th>
+                <th>Nome do cão</th>
+                <th>Tipo de treino</th>
                 </tr>
             </thead>
 
             <tbody>
-
+            <% @waiting.each do |w| %>
+                <tr>
+                    <td><%= link_to owner_path(w.owner_id) do %> <%= w.name %><% end %></td>
+                    <td><%= w.contact %></td>
+                    <td><%= link_to dog_path(w.dog_id) do %> <%= w.dog_name %><% end %></td>
+                    <td><%= w.train %></td>
+                </tr>
+            <% end %>
             </tbody>
             </table>
         </div>
+    <div class="digg_pagination">
+        <%= will_paginate @waiting, :container => false, :param_name => 'waiting_page' %>
     </div>
+    </div>
+
+
 <div class=" w-100 d-block float-left" >
     <div class="w-50 p-3 mt-20 float-left">
-        <h4 class="display-5 text-center" style: "text-align: center">Estadias por pagar</h4>
+        <h4 class="display-5 text-center" style: "text-align: center">Pagamentos em falta</h4>
         <table class="table table-striped table-dark table-hover table-sm w-100">
         <thead>
             <tr>
-                <th colspan="1"></th>
-                <th>Nome</th>
-                <th>Data de início</th>
-                <th>Data de fim</th>
-                <th>Preço</th>
-                <th>Nº de noites</th>
-                <th>Total</th>
                 <th>Nome do dono</th>
                 <th>Contacto</th>
+                <th>Nome do cão</th>
+                <th>Estado</th>
+                <th>Em falta</th>
             </tr>
         </thead>
 
         <tbody>
-
+            <% @missing_payments.each do |m| %>
+                <tr>
+                    <td><%= link_to owner_path(m.owner_id) do %> <%= m.name %><% end %></td>
+                    <td><%= m.contact %></td>
+                    <td><%= link_to dog_path(m.dog_id) do %> <%= m.dog_name %><% end %></td>
+                    <td><%= m.status %></td>
+                    <td><%= m.missing %></td>
+                </tr>
+            <% end %>
         </tbody>
         </table>
+    <div class="digg_pagination">
+        <%= will_paginate @missing_payments, :container => false, :param_name => 'missing_page'  %>
     </div>
+</div>

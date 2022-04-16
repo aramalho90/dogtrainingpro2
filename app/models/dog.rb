@@ -4,6 +4,8 @@ belongs_to :owner
 has_one_attached :picture
 has_many :grouptrains, dependent: :delete_all
 has_many :pttrains, dependent: :delete_all
+has_many :groupclasses, dependent: :delete_all
+has_many :ptclasses, dependent: :delete_all
 has_many :payments, dependent: :delete_all
 
   validates_length_of :grouptrains, maximum: 1

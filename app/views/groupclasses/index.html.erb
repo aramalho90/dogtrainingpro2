@@ -5,9 +5,9 @@
   <%= f.search_field :dog_name_cont %>
   <%= f.label :dog_name_cont, 'Nome do dono' %>
   <%= f.search_field :dog_owner_name_cont, placeholder: 'Nome do dono' %>
-  <%= f.label :class_date_eq, 'Data de inscrição' %>
+  <%= f.label :class_date_eq, 'Data de início' %>
   <%= f.date_field :class_date_eq, placeholder: 'Data' %>
-  <%= f.submit %>
+  <%= f.submit 'Filtrar' %>
 <% end %>
 <br>
 <table class="table table-striped table-dark table-hover">

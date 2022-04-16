@@ -5,14 +5,14 @@
   <%= f.search_field :dog_name_cont %>
   <%= f.label :dog_name_cont, 'Nome do dono' %>
   <%= f.search_field :dog_owner_name_cont %>
-  <%= f.label :inscr_date_eq, 'Data de inscrição' %>
-  <%= f.date_field :inscr_date_eq, placeholder: 'Data de inscrição' %>
+  <%= f.label :inscr_date_eq, 'Data de início' %>
+  <%= f.date_field :inscr_date_eq, placeholder: 'Data de início' %>
   <%= f.label :status_cont, 'Estado' %>
   <%= f.select :status_cont, [['Em lista de espera', 'Em lista de espera'], ['A realizar aulas teóricas', 'A realizar aulas teóricas'],
                                           ['A decorrer', 'A decorrer'],
                                           ['Terminado', 'Terminado']],{include_blank: ''}
                                          %>
-  <%= f.submit %>
+  <%= f.submit 'Filtrar' %>
 <% end %>
 <br>
 <table class="table table-striped table-dark table-hover">
@@ -22,7 +22,7 @@
       <th><%= sort_link(@q, :dog_name, 'Nome do cão') %></th>
       <th><%= sort_link(@q, :dog_owner_name, 'Nome do dono') %></th>
       <th>Tipe de treino</th>
-      <th><%= sort_link(@q, :inscr_date, 'Data de inscriçáo') %></th>
+      <th><%= sort_link(@q, :inscr_date, 'Data de início') %></th>
       <th>Estado</th>
       <th>Observaçóes</th>
     </tr>
