@@ -1,5 +1,5 @@
 class Owner < ApplicationRecord
-has_many :dogs, dependent: :delete_all
+has_many :dogs, dependent: :destroy
 
 validates :name,  presence: true
 

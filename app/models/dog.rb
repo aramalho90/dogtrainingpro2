@@ -2,11 +2,11 @@ class Dog < ApplicationRecord
 
 belongs_to :owner
 has_one_attached :picture
-has_many :grouptrains, dependent: :delete_all
-has_many :pttrains, dependent: :delete_all
-has_many :groupclasses, dependent: :delete_all
-has_many :ptclasses, dependent: :delete_all
-has_many :payments, dependent: :delete_all
+has_many :grouptrains, dependent: :destroy
+has_many :pttrains, dependent: :destroy
+has_many :groupclasses, dependent: :destroy
+has_many :ptclasses, dependent: :destroy
+has_many :payments, dependent: :destroy
 
   validates_length_of :grouptrains, maximum: 1
   validates_length_of :pttrains, maximum: 1
