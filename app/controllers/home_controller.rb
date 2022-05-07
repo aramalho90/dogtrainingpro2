@@ -55,5 +55,66 @@ class HomeController < ApplicationController
                 join owners o on o.id = d.owner_id
                 where status = 'Em lista de espera'", :page => params[:waiting_page], :per_page => 10)
 
+        @teorics = Grouptrain.find_by_sql(
+        "select teoric1 as date, STRING_AGG(o.name,' , ') as owners
+         from grouptrains g
+         join dogs d on g.dog_id = d.id
+         join owners o on d.owner_id = o.id
+         where teoric1 >= current_date
+         group by teoric1
+
+         union
+
+         select teoric2 as date, STRING_AGG(o.name,' , ') as owners
+         from grouptrains g
+         join dogs d on g.dog_id = d.id
+         join owners o on d.owner_id = o.id
+         where teoric2 >= current_date
+         group by teoric2
+         order by date asc
+         limit 8")
+
+        @pass = Pttrain.find_by_sql(
+        "select test1 as pass, o.name as owner_name, d.name as dog_name, o.id as owner_id, d.id as dog_id
+         from pttrains p
+         join dogs d on p.dog_id = d.id
+         join owners o on d.owner_id = o.id
+         where test1 >= current_date
+
+         union
+
+         select test2 as pass, o.name as owner_name, d.name as dog_name, o.id as owner_id, d.id as dog_id
+         from pttrains p
+         join dogs d on p.dog_id = d.id
+         join owners o on d.owner_id = o.id
+         where test2 >= current_date
+
+         union
+
+         select test3 as pass, o.name as owner_name, d.name as dog_name, o.id as owner_id, d.id as dog_id
+         from pttrains p
+         join dogs d on p.dog_id = d.id
+         join owners o on d.owner_id = o.id
+         where test3 >= current_date
+
+         union
+
+         select test4 as pass, o.name as owner_name, d.name as dog_name, o.id as owner_id, d.id as dog_id
+         from pttrains p
+         join dogs d on p.dog_id = d.id
+         join owners o on d.owner_id = o.id
+         where test4 >= current_date
+
+         union
+
+         select test5 as pass, o.name as owner_name, d.name as dog_name, o.id as owner_id, d.id as dog_id
+         from pttrains p
+         join dogs d on p.dog_id = d.id
+         join owners o on d.owner_id = o.id
+         where test5 >= current_date
+
+         order by pass asc
+         limit 8")
+
         end
 end
