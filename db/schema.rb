@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_15_093618) do
+ActiveRecord::Schema.define(version: 2022_07_21_134932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,9 @@ ActiveRecord::Schema.define(version: 2022_04_15_093618) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "owner_id"
+    t.index ["id", "id"], name: "idx_dog_id"
+    t.index ["name"], name: "idx_dog_name"
+    t.index ["owner_id"], name: "idx_dog_owner_id"
   end
 
   create_table "groupclasses", force: :cascade do |t|
@@ -72,6 +75,8 @@ ActiveRecord::Schema.define(version: 2022_04_15_093618) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "dog_id"
     t.string "obs"
+    t.index ["dog_id"], name: "idx_groupclass_dog_id"
+    t.index ["id"], name: "idx_groupclass_id"
   end
 
   create_table "groupmaps", force: :cascade do |t|
@@ -91,6 +96,10 @@ ActiveRecord::Schema.define(version: 2022_04_15_093618) do
     t.bigint "dog_id"
     t.bigint "groupmap_id"
     t.date "inscr_date"
+    t.index ["dog_id"], name: "idx_grouptrain_dog_id"
+    t.index ["groupmap_id"], name: "idx_grouptrain_groupmap_id"
+    t.index ["id"], name: "idx_grouptrain_id"
+    t.index ["status"], name: "idx_grouptrain_status"
   end
 
   create_table "owners", force: :cascade do |t|
@@ -105,6 +114,8 @@ ActiveRecord::Schema.define(version: 2022_04_15_093618) do
     t.string "obs"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["id"], name: "idx_owner_id"
+    t.index ["name"], name: "idx_owner_name"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -113,6 +124,8 @@ ActiveRecord::Schema.define(version: 2022_04_15_093618) do
     t.string "obs"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "dog_id"
+    t.index ["id"], name: "idx_payment_id"
   end
 
   create_table "ptclasses", force: :cascade do |t|
@@ -121,6 +134,8 @@ ActiveRecord::Schema.define(version: 2022_04_15_093618) do
     t.string "obs"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["dog_id"], name: "idx_ptclass_dog_id"
+    t.index ["id"], name: "idx_ptclass_id"
   end
 
   create_table "ptmaps", force: :cascade do |t|
@@ -142,6 +157,16 @@ ActiveRecord::Schema.define(version: 2022_04_15_093618) do
     t.bigint "ptmap_id"
     t.date "test5"
     t.date "inscr_date"
+    t.text "mon1"
+    t.text "mon2"
+    t.text "mon3"
+    t.text "mon4"
+    t.text "mon5"
+    t.text "mon6"
+    t.index ["dog_id"], name: "idx_pttrain_dog_id"
+    t.index ["id"], name: "idx_pttrain_id"
+    t.index ["ptmap_id"], name: "idx_pttrain_ptmap_id"
+    t.index ["status"], name: "idx_pttrain_status"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -6,6 +6,8 @@ class PttrainsController < ApplicationController
     @pttrains = Pttrain.find_by_sql("select d.name as dog_name, p.* from
                                                pttrains p left join dogs d
                                                on p.dog_id = d.id
+                                               where p.status in ('A decorrer','A realizar passagens')
+                                               order by p.inscr_date asc
                                                ")
   end
 
@@ -42,7 +44,7 @@ class PttrainsController < ApplicationController
   def update
     respond_to do |format|
       if @pttrain.update(pttrain_params)
-        format.html { redirect_to grouptrains_url }
+        format.html { redirect_to pttrains_url }
         format.json { render :show, status: :ok, location: @pttrain }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -68,6 +70,6 @@ class PttrainsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pttrain_params
-      params.require(:pttrain).permit(:test1, :test2, :test3, :test4, :test5, :inscr_paid, :status, :obs, :ptmap_id, :dog_id, :inscr_date)
+      params.require(:pttrain).permit(:test1, :test2, :test3, :test4, :test5, :inscr_paid, :status, :obs, :ptmap_id, :dog_id, :inscr_date, :mon1, :mon2, :mon3, :mon4, :mon5, :mon6)
     end
 end
