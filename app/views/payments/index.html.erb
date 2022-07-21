@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <%= search_form_for @q do |f| %>
-  <%= f.label :dog_name, 'Nome do cão' %>
-  <%= f.search_field :dog_name %>
-  <%= f.label :dog_owner_name, 'Nome do dono' %>
-  <%= f.search_field :dog_owner_name %>
+  <%= f.label :dog_name_cont, 'Nome do cão' %>
+  <%= f.search_field :dog_name_cont %>
+  <%= f.label :dog_owner_name_cont, 'Nome do dono' %>
+  <%= f.search_field :dog_owner_name_cont %>
   <%= f.submit 'Filtrar' %>
 <% end %>
 <br>

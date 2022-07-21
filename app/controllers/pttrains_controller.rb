@@ -3,7 +3,10 @@ class PttrainsController < ApplicationController
 
   # GET /pttrains or /pttrains.json
   def index
-    @pttrains = Pttrain.all
+    @pttrains = Pttrain.find_by_sql("select d.name as dog_name, p.* from
+                                               pttrains p left join dogs d
+                                               on p.dog_id = d.id
+                                               ")
   end
 
   # GET /pttrains/1 or /pttrains/1.json
