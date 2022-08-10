@@ -3,12 +3,14 @@ class PttrainsController < ApplicationController
 
   # GET /pttrains or /pttrains.json
   def index
-    @pttrains = Pttrain.find_by_sql("select d.name as dog_name, p.* from
-                                               pttrains p left join dogs d
-                                               on p.dog_id = d.id
-                                               where p.status in ('A decorrer','A realizar passagens')
-                                               order by p.inscr_date asc
-                                               ")
+    @q = Pttrain
+                .joins("LEFT JOIN dogs ON pttrains.dog_id = dogs.id")
+                .joins("LEFT JOIN ptmaps ON pttrains.ptmap_id = ptmaps.id")
+                .where("status in ('A decorrer','A realizar passagens')")
+                .select("dogs.id,pttrains.id,dogs.name,mon1,mon2,mon3,mon4,mon5,mon6,ptmaps.day")
+                .order("inscr_date ASC").ransack(params[:q])
+
+    @pttrains = @q.result().paginate(page: params[:page], per_page: 12)
   end
 
   # GET /pttrains/1 or /pttrains/1.json

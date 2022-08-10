@@ -37,14 +37,14 @@ class HomeController < ApplicationController
         	) as tr
         on d.id = tr.dog_id
         join owners o on o.id = d.owner_id
-        left join payments pay on d.id = pay.dog_id and pay.date between cast(date_trunc('month',inscr_date) as date) and cast(date_trunc('month', current_date) as date)
+        left join payments pay on d.id = pay.dog_id and pay.date between inscr_date and current_date
         where status in ('A realizar passagens','A decorrer','A realizar aulas teóricas') and inscr_date is not null
-        group by o.id,o.name, o.contact,d.id, d.name,tr.status,extract(month from age(cast(date_trunc('month', current_date) as date), cast(date_trunc('month',inscr_date) as date)))
-        having count(1) filter (where pay.date is not null) < (extract(month from age(cast(date_trunc('month', current_date) as date), cast(date_trunc('month',inscr_date) as date))) + 1)
+        group by o.id,o.name, o.contact,d.id, d.name,tr.status,extract(month from age(current_date, inscr_date))
+        having count(1) filter (where pay.date is not null) < (extract(month from age(current_date, inscr_date)))+1
         ", :page => params[:missing_page], :per_page => 10)
 
         @waiting = Owner.paginate_by_sql(
-        "select o.id as owner_id,o.name, o.contact,d.id as dog_id, d.name as dog_name,tr.train
+        "select o.id as owner_id,o.name, o.contact,d.id as dog_id, d.name as dog_name,tr.train,tr.inscr_date
         from dogs d
         join (
                 select dog_id,inscr_date,status, 'Grupo' as train

@@ -14,7 +14,7 @@
                 <tr>
                     <td><%= v.time %></td>
                     <% if v.count < v.limit %>
-                    <td class="green"><%= v.count %></td>
+                    <td class="aqua"><%= v.count %></td>
                     <% elsif v.count == v.limit %>
                     <td class="yellow"><%= v.count %></td>
                     <% else %>
@@ -43,7 +43,7 @@
                 <tr>
                     <td><%= v.day %></td>
                     <% if v.count < v.limit %>
-                    <td class="green"><%= v.count %></td>
+                    <td class="aqua"><%= v.count %></td>
                     <% elsif v.count == v.limit %>
                     <td class="yellow"><%= v.count %></td>
                     <% else %>
@@ -65,6 +65,7 @@
                 <th>Contacto</th>
                 <th>Nome do cão</th>
                 <th>Tipo de treino</th>
+                <th>Data de início</th>
                 </tr>
             </thead>
 
@@ -75,6 +76,7 @@
                     <td><%= w.contact %></td>
                     <td><%= link_to dog_path(w.dog_id) do %> <%= w.dog_name %><% end %></td>
                     <td><%= w.train %></td>
+                    <td><%= w.inscr_date %></td>
                 </tr>
             <% end %>
             </tbody>
